@@ -1,3 +1,7 @@
 res://world/gen_world/world_generation.tscn
 res://world/gen_world/world_generation.gd
 res://debug/free_camera.gd
+res://Component/HealthComponent.gd
+res://Component/health_component.tscn
+res://Player/Player.gd
+res://Player/Player.tscn

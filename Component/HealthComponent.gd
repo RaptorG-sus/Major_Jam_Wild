@@ -1,6 +1,9 @@
 extends Node2D
 class_name HealthComponent
 
+
+@onready var Health_bar = $Health_bar
+
 @export var Max_health :int
 
 var hp : float
@@ -8,17 +11,16 @@ var hp : float
 
 func _ready() -> void:
 	hp = Max_health
-	$ColorDark.hide()
-	$ColorGreen.hide()
+	#Health_bar.hide()
+	Health_bar.max_value = Max_health
+	Health_bar.value = Health_bar.max_value
 	
 
 func damage(attack :Attack) -> void:
 	hp -= attack.attack_damage
 	
-	$ColorDark.show()
-	$ColorGreen.show()
-	
-	$ColorGreen.size.x = hp * 10 / Max_health
+	Health_bar.show()
+	Health_bar.value = hp
 	
 	if hp <= 0:
 
