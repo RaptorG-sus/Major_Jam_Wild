@@ -1,7 +1,0 @@
-res://Player/Player.tscn
-res://Resource/Player_inventory.tres
-res://Player/Interaction/tools.tscn
-res://Player/Inventory/inv_ui.tscn
-res://Component/health_component.tscn
-res://Player/Inventory/inv_ui_slot.tscn
-res://Player/Inventory/Inventory_item.gd
