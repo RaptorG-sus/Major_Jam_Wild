@@ -17,16 +17,13 @@ func _ready():
 
 
 func _process(delta):
-<<<<<<< HEAD
 	if (map.get_cell_source_id(0,Vector2i(coord.x,coord.y+1))) != 4 and (map.get_cell_source_id(0,Vector2i(coord.x,coord.y+1))) != 1:
 		pass
 		
 func _on_area_2d_input_event(viewport:Node, event:InputEvent, shape_idx:int) -> void:
 	if event.is_action_pressed("Interaction"):
-=======
-	await (get_tree().create_timer(0.2)).timeout
+		await (get_tree().create_timer(0.2)).timeout
 	if (map.get_cell_source_id(0,Vector2i(coord.x,coord.y+1))) != 0 and (map.get_cell_source_id(0,Vector2i(coord.x,coord.y+1))) != 2:
->>>>>>> 1d96d2807dc607e4641920f6fd7b651e3656a0d6
 		break_tree()
 		#print(map.get_cell_source_id(0,Vector2i(coord.x,coord.y+1)))
 

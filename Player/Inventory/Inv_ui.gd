@@ -67,7 +67,7 @@ func parent_name(panel :Panel):
 func drag_and_drop(slot_to :Panel) -> void:
 	var panel_index :int = int(str(slot_to.name).get_slice("t", 1))
 	
-	if slot_from == null && parent_name(slot_to)[panel_index-1].item.name == "":
+	if slot_from == null && parent_name(slot_to)[panel_index-1].item == null:
 		return
 
 	if slot_from == null:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3yxgbv2s7qf3"]
+[gd_scene load_steps=9 format=3 uid="uid://b3yxgbv2s7qf3"]
 
 [ext_resource type="Script" uid="uid://bf0kcnem8vrb" path="res://Player/Player.gd" id="1_tok1r"]
 [ext_resource type="PackedScene" uid="uid://brjl1d45gl455" path="res://Component/health_component.tscn" id="1_vvw5e"]
@@ -50,7 +50,6 @@ position = Vector2(-3, 0)
 shape = SubResource("CapsuleShape2D_s1rgi")
 
 [node name="Inv_ui" parent="." instance=ExtResource("4_ddoul")]
-process_mode = 3
 custom_minimum_size = Vector2(192, 80)
 offset_left = -384.0
 offset_top = -160.0
