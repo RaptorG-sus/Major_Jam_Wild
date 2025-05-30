@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmw5oat3pdiu8"]
+
+[ext_resource type="Texture2D" uid="uid://b7jhly4xjpsw0" path="res://world/supp_world/terrain/block_gen/herbe_demo.png" id="1_s0b7h"]
+
+[node name="BlockGen" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_s0b7h")
