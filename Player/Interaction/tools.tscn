@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://jg1rthm1bemt"]
+
+[ext_resource type="Script" uid="uid://576734rg53f2" path="res://Player/Interaction/tools.gd" id="1_8fwdw"]
+[ext_resource type="Texture2D" uid="uid://d1tesk8tplpx" path="res://icon.svg" id="2_17c81"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xqj60"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_17c81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_17c81")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kq8ra"]
+
+[node name="Tools" type="Node2D"]
+script = ExtResource("1_8fwdw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(64, 0)
+sprite_frames = SubResource("SpriteFrames_xqj60")
+autoplay = "default"
+frame = 1
+frame_progress = 1.0
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_kq8ra")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
