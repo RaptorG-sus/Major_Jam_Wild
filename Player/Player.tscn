@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3yxgbv2s7qf3"]
+[gd_scene load_steps=6 format=3 uid="uid://b3yxgbv2s7qf3"]
 
 [ext_resource type="Script" uid="uid://bf0kcnem8vrb" path="res://Player/Player.gd" id="1_tok1r"]
 [ext_resource type="PackedScene" uid="uid://brjl1d45gl455" path="res://Component/health_component.tscn" id="1_vvw5e"]
 [ext_resource type="PackedScene" uid="uid://b8gka0iivukyi" path="res://Component/hitbox_component.tscn" id="2_inwu4"]
+[ext_resource type="PackedScene" uid="uid://l8qhlw52wqqd" path="res://Player/Inventory/inv_ui.tscn" id="4_ddoul"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tok1r"]
 
@@ -22,3 +23,9 @@ hp_comp = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CircleShape2D_tok1r")
+
+[node name="Inv_ui" parent="." instance=ExtResource("4_ddoul")]
+offset_left = -64.0
+offset_top = -128.0
+offset_right = 64.0
+offset_bottom = -38.0
