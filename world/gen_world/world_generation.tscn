@@ -37,10 +37,6 @@ visible = false
 texture = SubResource("NoiseTexture2D_li1ka")
 
 [node name="Player" parent="." instance=ExtResource("4_quu78")]
+speed = 1500.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-<<<<<<< HEAD
-script = ExtResource("5_j5epj")
-=======
-zoom = Vector2(0.5, 0.5)
->>>>>>> 8601bfc5a62109bc213f60744773aa4cd504ae40
