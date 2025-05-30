@@ -1,4 +1,6 @@
+Sprite2D
 CollisionShape2D
+<<<<<<< HEAD
 Sprite2D
 HBoxContainer
 Control
@@ -7,8 +9,17 @@ Button
 Panel
 GridContainer
 NinePatchRect
+=======
+Area2D
+Camera2D
+>>>>>>> 8601bfc5a62109bc213f60744773aa4cd504ae40
 ProgressBar
 TextEdit
 CodeEdit
-Area2D
 AnimatedSprite2D
+<<<<<<< HEAD
+=======
+Panel
+CharacterBody2D
+TileMap
+>>>>>>> 8601bfc5a62109bc213f60744773aa4cd504ae40

@@ -4,9 +4,9 @@ extends Node2D
 @onready var map = $TileMap
 @onready var seed_world = randi_range(1, 65536)
 @onready var seed_ore = randi_range(1,256)
-@onready var ore_value = 0.3
 
 var earth_value : float = -0.25                                                                     # pour plus ou moins de grotte / rocher volant
+var ore_value : float = 0.3
 var tree_percentage : int = 5                                                                       # pourcentage d'arbre permettant changeant en fonction de la planete
 var block = Vector2i(3,2)                                                                           # temporaire ou pas, block utilisé pour faire l'herbe
 																									# block à utiliser pour les arbres etc...
@@ -17,7 +17,9 @@ var range_generation : int = 200
 func _ready() -> void:
 	terrain_generation()
 	tree_generation()
-
+	ore_generation()
+	
+	
 func terrain_generation():
 	noise.seed = seed_world                                                                         # genere la seed du monde
 	for x in range(range_generation):
@@ -35,11 +37,13 @@ func tree_generation():
 				while map.get_cell_atlas_coords(0,Vector2i(x,y)) != block:                          # pour poser le block au plus bas possible jusqu'a la hauteur voulue (suite du while)
 					y+=1
 				for i in range(10):
-					map.set_cell(0,Vector2i(x,-i+(y-1)),2,Vector2i(0,0))                            # à remplacer par "load_scene_arbre(coord x, y patati patata)
+					map.set_cell(0,Vector2i(x,-i+(y-1)),4,Vector2i(0,0),1)                            # à remplacer par "load_scene_arbre(coord x, y patati patata)
 
-"""func minerais_genere():
-	noise.seed_world
-	for x in range(4000):
-		for y in range(100,400):
-			if noise.get_noise_2d(x,y) > ore_value and map.get_cell_atlas_coords(0,Vector2i) == block:
-				map.set_cell(0,Vector2i(x,y),1,Vector2i(1,1))"""
+func ore_generation():
+	noise.seed = seed_ore                                                                           # genere prend une nouvelle seed pour les minerais
+	for x in range(range_generation):                   
+		var up_ore = abs(noise.get_noise_2d(x,150)*5)                                                # adoucir les minerais
+		for y in range(up_ore,500):                                                                 # generation en y
+			if noise.get_noise_2d(x,y) > ore_value and map.get_cell_atlas_coords(0,Vector2i(x,y)) == block:                 # placement des minerais
+				map.erase_cell(0,Vector2i(x,y))
+				map.set_cell(0,Vector2i(x,y),3,Vector2i.ZERO,1)

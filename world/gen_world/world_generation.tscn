@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://bopmtpnbqnl3b"]
+[gd_scene load_steps=12 format=3 uid="uid://bopmtpnbqnl3b"]
 
 [ext_resource type="Script" uid="uid://dqb7uf8h0vs7e" path="res://world/gen_world/world_generation.gd" id="1_38ibh"]
 [ext_resource type="Texture2D" uid="uid://d1tesk8tplpx" path="res://icon.svg" id="1_mqvbt"]
-[ext_resource type="PackedScene" uid="uid://b3yxgbv2s7qf3" path="res://Player/Player.tscn" id="3_ik7gn"]
-[ext_resource type="Texture2D" uid="uid://ycnog4duo6dq" path="res://tree_demo.png" id="3_quu78"]
-[ext_resource type="Script" uid="uid://8s0qthei8v0t" path="res://debug/free_camera.gd" id="5_j5epj"]
+[ext_resource type="PackedScene" uid="uid://2c4efy4dim1" path="res://world/supp_world/nature/all_tree/tree_gen/treeGen.tscn" id="4_8jo56"]
+[ext_resource type="PackedScene" uid="uid://60jwa58ougx0" path="res://world/supp_world/all_ore/ore_gen/gen_ore.tscn" id="4_j5epj"]
+[ext_resource type="PackedScene" uid="uid://b3yxgbv2s7qf3" path="res://Player/Player.tscn" id="4_quu78"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_38ibh"]
 texture = ExtResource("1_mqvbt")
@@ -67,13 +67,17 @@ texture = ExtResource("1_mqvbt")
 4:3/0 = 0
 3:1/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5epj"]
-texture = ExtResource("3_quu78")
-0:0/0 = 0
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_8jo56"]
+resource_name = "ore"
+scenes/1/scene = ExtResource("4_j5epj")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6um31"]
+scenes/1/scene = ExtResource("4_8jo56")
 
 [sub_resource type="TileSet" id="TileSet_ik7gn"]
 sources/1 = SubResource("TileSetAtlasSource_38ibh")
-sources/2 = SubResource("TileSetAtlasSource_j5epj")
+sources/3 = SubResource("TileSetScenesCollectionSource_8jo56")
+sources/4 = SubResource("TileSetScenesCollectionSource_6um31")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mqvbt"]
 fractal_weighted_strength = 0.09
@@ -87,12 +91,18 @@ script = ExtResource("1_38ibh")
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_ik7gn")
 format = 2
+layer_0/tile_data = PackedInt32Array(-524288, 4, 65536)
 
 [node name="Noise" type="Sprite2D" parent="."]
 visible = false
 texture = SubResource("NoiseTexture2D_38ibh")
 
-[node name="Player" parent="." instance=ExtResource("3_ik7gn")]
+[node name="Player" parent="." instance=ExtResource("4_quu78")]
+speed = 1500.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+<<<<<<< HEAD
 script = ExtResource("5_j5epj")
+=======
+zoom = Vector2(0.5, 0.5)
+>>>>>>> 8601bfc5a62109bc213f60744773aa4cd504ae40

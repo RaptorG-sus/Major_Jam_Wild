@@ -55,3 +55,7 @@ open_inventory={
 2d_physics/layer_3="map"
 2d_physics/layer_5="tree"
 2d_physics/layer_6="rock"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

@@ -8,3 +8,4 @@ res://Player/Inventory/inv_ui_slot.tscn
 res://Player/Inventory/Inv_ui.gd
 res://Component/HealthComponent.gd
 res://Player/Inventory/Inventory_item.gd
+res://world/gen_world/world_generation.gd
