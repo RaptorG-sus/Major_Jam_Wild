@@ -4,8 +4,9 @@ extends Panel
 @onready var item_visual :Sprite2D = $CenterContainer/Panel/Item_display
 @onready var amount_text :Label = $CenterContainer/Panel/Label
 
-
 signal pressed(Panel)
+
+
 
 
 func update(slot :InvSlot) -> void:
@@ -19,7 +20,6 @@ func update(slot :InvSlot) -> void:
 		if slot.amount > 1 :
 			amount_text.visible = true
 		amount_text.text = str(slot.amount)
-
 
 func _on_button_pressed() -> void:
 	pressed.emit(self)
