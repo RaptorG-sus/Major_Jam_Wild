@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bopmtpnbqnl3b"]
+[gd_scene load_steps=10 format=3 uid="uid://bopmtpnbqnl3b"]
 
 [ext_resource type="Script" uid="uid://dqb7uf8h0vs7e" path="res://world/gen_world/world_generation.gd" id="1_38ibh"]
 [ext_resource type="Texture2D" uid="uid://d1tesk8tplpx" path="res://icon.svg" id="1_mqvbt"]
+[ext_resource type="Script" uid="uid://8s0qthei8v0t" path="res://debug/free_camera.gd" id="3_ik7gn"]
+[ext_resource type="Texture2D" uid="uid://bjqhxqddga74v" path="res://tree_demo.png" id="3_quu78"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_38ibh"]
 texture = ExtResource("1_mqvbt")
@@ -64,10 +66,16 @@ texture = ExtResource("1_mqvbt")
 4:3/0 = 0
 3:1/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5epj"]
+texture = ExtResource("3_quu78")
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_ik7gn"]
 sources/1 = SubResource("TileSetAtlasSource_38ibh")
+sources/2 = SubResource("TileSetAtlasSource_j5epj")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mqvbt"]
+fractal_weighted_strength = 0.09
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_38ibh"]
 noise = SubResource("FastNoiseLite_mqvbt")
@@ -86,3 +94,4 @@ texture = SubResource("NoiseTexture2D_38ibh")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(575, 323)
 zoom = Vector2(0.5, 0.5)
+script = ExtResource("3_ik7gn")
