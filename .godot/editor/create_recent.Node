@@ -1,12 +1,12 @@
+CollisionShape2D
+Sprite2D
 HBoxContainer
 Control
 CenterContainer
 Button
-Sprite2D
 Panel
 GridContainer
 NinePatchRect
-CollisionShape2D
 ProgressBar
 TextEdit
 CodeEdit

@@ -46,12 +46,15 @@ func open() -> void:
 	is_open = true
 	$Equipement.visible = true
 	$Inventaire.visible = true
+	get_tree().paused = true
 	
 	
 func close() -> void:
 	is_open = false
 	$Equipement.visible = false
 	$Inventaire.visible = false
+	get_tree().paused = false
+
 	
 	
 func drag_and_drop(slot :Panel) -> void:
@@ -62,13 +65,13 @@ func drag_and_drop(slot :Panel) -> void:
 		
 	var temp_slot :Panel = slot_from
 	
+	# Gère le moment ou on veut mettre un item dans un slot d'equipement
 	if slot.get_parent().get_parent() == $Equipement:
 		if !(slot_from.item.type == 1) :
 			slot_from = null
 			return
-		
-		var stat = Player_stat.new()
-		update_player_stat.emit(stat)
+	
+		update_player_stat.emit(slot_from.stat)
 		
 	slot_from = slot
 	slot = temp_slot
