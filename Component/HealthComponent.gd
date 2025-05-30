@@ -27,7 +27,8 @@ func damage(attack :Attack) -> void:
 		var parent = get_parent()
 		
 		#parent.destroy()
-
+		if parent is block:
+			parent.break_tree()
 		parent.queue_free()
 
 	

@@ -13,7 +13,6 @@ var block = Vector2i(3,2)                                                       
 
 var range_generation : int = 200
 
-
 func _ready() -> void:
 	terrain_generation()
 	tree_generation()
@@ -42,8 +41,8 @@ func tree_generation():
 func ore_generation():
 	noise.seed = seed_ore                                                                           # genere prend une nouvelle seed pour les minerais
 	for x in range(range_generation):                   
-		var up_ore = abs(noise.get_noise_2d(x,150)*5)                                                # adoucir les minerais
-		for y in range(up_ore,500):                                                                 # generation en y
+											  # adoucir les minerais
+		for y in range(75,500):                                                                 # generation en y
 			if noise.get_noise_2d(x,y) > ore_value and map.get_cell_atlas_coords(0,Vector2i(x,y)) == block:                 # placement des minerais
 				map.erase_cell(0,Vector2i(x,y))
 				map.set_cell(0,Vector2i(x,y),1,Vector2i.ZERO,1)
