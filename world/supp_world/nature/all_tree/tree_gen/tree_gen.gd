@@ -36,11 +36,9 @@ func break_tree():
 
 
 func _on_hitbox_component_input_event(viewport:Node, event:InputEvent, shape_idx:int) -> void:
-	var attack = Attack.new()
-	attack.attack_damage = 1
-	attack.knockback_force = 0
+	var attack = AttackData.new(1, 0, 0)
 	attack.attack_position = global_position
-	attack.stun_time = 0
+
 	if event.is_action_pressed("Interaction"):
 		print("test")
 		$HitboxComponent.damage(attack)

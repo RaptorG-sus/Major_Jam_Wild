@@ -14,11 +14,8 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		
 		var hitbox :HitboxComponent = area
 		
-		var attack = Attack.new()
-		attack.attack_damage = attack_damage
-		attack.knockback_force = knockback_force
+		var attack = AttackData.new(attack_damage, knockback_force, stun_time)
 		attack.attack_position = global_position
-		attack.stun_time = stun_time
 
 		hitbox.damage(attack)
 

@@ -16,7 +16,7 @@ func _ready() -> void:
 	Health_bar.value = Health_bar.max_value
 	
 
-func damage(attack :Attack) -> void:
+func damage(attack :AttackData) -> void:
 	hp -= attack.attack_damage
 	
 	Health_bar.show()

@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b3yxgbv2s7qf3"]
+[gd_scene load_steps=9 format=3 uid="uid://b3yxgbv2s7qf3"]
 
 [ext_resource type="Script" uid="uid://bf0kcnem8vrb" path="res://Player/Player.gd" id="1_tok1r"]
 [ext_resource type="PackedScene" uid="uid://brjl1d45gl455" path="res://Component/health_component.tscn" id="1_vvw5e"]
-[ext_resource type="Resource" uid="uid://wftd8cqvx4gi" path="res://Ressource/Player_inventory.tres" id="2_6ysni"]
 [ext_resource type="Texture2D" uid="uid://r17vaofxxqde" path="res://Sprite/Astronaute_right.png" id="2_8g4oa"]
 [ext_resource type="PackedScene" uid="uid://b8gka0iivukyi" path="res://Component/hitbox_component.tscn" id="2_inwu4"]
 [ext_resource type="PackedScene" uid="uid://l8qhlw52wqqd" path="res://Player/Inventory/inv_ui.tscn" id="4_ddoul"]
@@ -27,7 +26,7 @@ height = 128.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_tok1r")
-inv = ExtResource("2_6ysni")
+speed = 300.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

@@ -1,24 +1,25 @@
 extends CharacterBody2D
 
 @export var inv :Inv 
-@export var speed :float
 
+@onready var player_stat :ArmorData = ArmorData.new(10, 0, 300)
+# Les stats du player
 
 # Les scenes des outils de farm + arme de mélée
 var tools :PackedScene = preload("res://Player/Interaction/tools.tscn")
 var axe :PackedScene = null
 var pickaxe :PackedScene = null
 
+var tools_name :String = ""
 
-# Les stats du player
-var player_stat :Player_stat = Player_stat.new()
+
 # Gère la direction du player 
 var direction :float = 0
 var direction2 :=Vector2.ZERO
 # L'outil ou arme en main du player
 var actual_scene :PackedScene = tools
 # Pour éviter de spamer
-var can_attack :bool = true
+var can_attack :bool = false
 # Modifie la vitesse en fonction de la taille du sprite du player
 var taille_sprite :int = 64
 
@@ -26,11 +27,9 @@ var taille_sprite :int = 64
 func _ready() -> void:
 	if !($Inv_ui.update_player_stat.is_connected(stat_update)):
 		$Inv_ui.update_player_stat.connect(stat_update)
-		
-	player_stat.hp = 10
-	player_stat.armor = 0
-	player_stat.speed = speed
-	
+	if !($Inv_ui.usable.is_connected(full_usable)):
+		$Inv_ui.usable.connect(full_usable)
+
 	$HealthComponent.Max_health = player_stat.hp
 
 
@@ -55,13 +54,18 @@ func _input(event: InputEvent) -> void:
 			animation.set_frame(0)
 	"""
 	# Gère l'attaque du joueur
-	if event.is_action_pressed("Interaction") and can_attack and actual_scene != null:
+	if event.is_action_pressed("Interaction") and can_attack:
 		can_attack = false
 		attack()
 		
 # Génère la scene associer à l'outil pour mettre des dégats aux features
 func attack() -> void:
-	var player_attack = actual_scene.instantiate()
+	var player_attack 
+	match tools_name:
+		"axe" : player_attack = axe.instantiate()
+		"pickaxe" : player_attack = pickaxe.instantiate()
+		"*" : return
+		
 	player_attack.attack_end.connect(_on_attack_end)
 	add_child(player_attack)
 
@@ -69,14 +73,31 @@ func attack() -> void:
 
 
 func _on_attack_end() -> void:
-	can_attack = true
+	if tools_name != "":
+		can_attack = true
 
 
-func stat_update(stat :Player_stat) ->void:
+func stat_update(stat :ArmorData) ->void:
 	player_stat.hp = stat.hp
 	player_stat.armor = stat.armor
 	player_stat.speed = stat.speed
 
+
+func full_usable(slot :InvSlot) -> void:
+	if slot != null && slot.item != null:
+		# Armes
+		if slot.item.item_data is AttackData:
+			tools_name = slot.item.name
+			can_attack = true
+		# Heal
+		elif slot.item.item_data is ArmorData:
+			pass
+		else:
+			# Reste (loot ... )
+			tools_name = ""
+	else:
+		# Reste (loot ... )
+		tools_name = ""
 	
 func collect(item) -> void:
 	inv.insert(item)
