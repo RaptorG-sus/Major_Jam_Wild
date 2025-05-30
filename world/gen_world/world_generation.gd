@@ -34,9 +34,9 @@ func tree_generation():
 				for i in range(10):
 					map.set_cell(0,Vector2i(x,-i+(y-1)),2,Vector2i(0,0))                            # à remplacer par "load_scene_arbre(coord x, y patati patata)
 
-"""func minerais_genere():
+func minerais_genere():
 	noise.seed_world
 	for x in range(4000):
 		for y in range(100,400):
-			if noise.get_noise_2d(x,y) > ore_value and map.get_cell_atlas_coords(0,Vector2i) == block:
-				map.set_cell(0,Vector2i(x,y),1,Vector2i(1,1))"""
+			if noise.get_noise_2d(x,y) > ore_value and map.get_cell_atlas_coords(0,Vector2i(x,y)) == block:
+				map.set_cell(0,Vector2i(x,y),1,Vector2i(1,1))

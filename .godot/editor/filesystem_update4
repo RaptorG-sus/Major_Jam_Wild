@@ -1,2 +1,3 @@
 res://world/gen_world/world_generation.tscn
 res://world/gen_world/world_generation.gd
+res://debug/free_camera.gd
