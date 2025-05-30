@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-
+@export var inv :Inv 
 @export var speed :float
 
 
@@ -30,7 +30,6 @@ func _ready() -> void:
 	player_stat.hp = 10
 	player_stat.armor = 0
 	player_stat.speed = speed
-	
 	
 	$HealthComponent.Max_health = player_stat.hp
 
@@ -77,3 +76,7 @@ func stat_update(stat :Player_stat) ->void:
 	player_stat.hp = stat.hp
 	player_stat.armor = stat.armor
 	player_stat.speed = stat.speed
+
+	
+func collect(item) -> void:
+	inv.insert(item)

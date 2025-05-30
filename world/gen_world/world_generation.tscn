@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://60jwa58ougx0" path="res://world/supp_world/all_ore/ore_gen/gen_ore.tscn" id="4_j5epj"]
 [ext_resource type="PackedScene" uid="uid://b3yxgbv2s7qf3" path="res://Player/Player.tscn" id="4_quu78"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_38ibh"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j5epj"]
 texture = ExtResource("1_mqvbt")
 0:0/0 = 0
 1:0/0 = 0
@@ -19,6 +19,7 @@ texture = ExtResource("1_mqvbt")
 0:1/0 = 0
 1:1/0 = 0
 2:1/0 = 0
+3:1/0 = 0
 4:1/0 = 0
 5:1/0 = 0
 6:1/0 = 0
@@ -35,9 +36,16 @@ texture = ExtResource("1_mqvbt")
 1:3/0 = 0
 2:3/0 = 0
 3:3/0 = 0
+4:3/0 = 0
 5:3/0 = 0
 6:3/0 = 0
 7:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
 6:4/0 = 0
 7:4/0 = 0
 0:5/0 = 0
@@ -64,45 +72,34 @@ texture = ExtResource("1_mqvbt")
 5:7/0 = 0
 6:7/0 = 0
 7:7/0 = 0
-4:3/0 = 0
-3:1/0 = 0
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_8jo56"]
-resource_name = "ore"
 scenes/1/scene = ExtResource("4_j5epj")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6um31"]
 scenes/1/scene = ExtResource("4_8jo56")
 
-[sub_resource type="TileSet" id="TileSet_ik7gn"]
-sources/1 = SubResource("TileSetAtlasSource_38ibh")
-sources/3 = SubResource("TileSetScenesCollectionSource_8jo56")
-sources/4 = SubResource("TileSetScenesCollectionSource_6um31")
+[sub_resource type="TileSet" id="TileSet_nrbq6"]
+sources/0 = SubResource("TileSetAtlasSource_j5epj")
+sources/1 = SubResource("TileSetScenesCollectionSource_8jo56")
+sources/2 = SubResource("TileSetScenesCollectionSource_6um31")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_mqvbt"]
-fractal_weighted_strength = 0.09
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_41bai"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_38ibh"]
-noise = SubResource("FastNoiseLite_mqvbt")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_li1ka"]
+noise = SubResource("FastNoiseLite_41bai")
 
 [node name="world_generation" type="Node2D"]
 script = ExtResource("1_38ibh")
 
 [node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_ik7gn")
+tile_set = SubResource("TileSet_nrbq6")
 format = 2
-layer_0/tile_data = PackedInt32Array(-524288, 4, 65536)
 
 [node name="Noise" type="Sprite2D" parent="."]
 visible = false
-texture = SubResource("NoiseTexture2D_38ibh")
+texture = SubResource("NoiseTexture2D_li1ka")
 
 [node name="Player" parent="." instance=ExtResource("4_quu78")]
-speed = 1500.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-<<<<<<< HEAD
-script = ExtResource("5_j5epj")
-=======
-zoom = Vector2(0.5, 0.5)
->>>>>>> 8601bfc5a62109bc213f60744773aa4cd504ae40

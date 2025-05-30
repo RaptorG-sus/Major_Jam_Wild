@@ -6,9 +6,9 @@ enum Type{
 	EQUIP = 1
 }
 
-@export var type :Type
+@export var type :Type = 0
 @export var name :String = ""
-@export var texture :Texture2D
+@export var texture :Texture2D 
 
 var stat :Player_stat
 

@@ -10,10 +10,9 @@ func _ready():
 
 func _process(delta):
 	if (map.get_cell_source_id(0,Vector2i(coord.x,coord.y+1))) != 4 and (map.get_cell_source_id(0,Vector2i(coord.x,coord.y+1))) != 1:
-		print(map.get_cell_source_id(0,Vector2i(coord.x,coord.y+1)))
-
+		pass
+		
 func _on_area_2d_input_event(viewport:Node, event:InputEvent, shape_idx:int) -> void:
-	print(map.get_cell_source_id(0,Vector2i(coord.x,coord.y+1)))
 	if event.is_action_pressed("Interaction"):
 		break_tree()
 

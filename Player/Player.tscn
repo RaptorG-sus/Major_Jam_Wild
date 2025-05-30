@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bf0kcnem8vrb" path="res://Player/Player.gd" id="1_tok1r"]
 [ext_resource type="PackedScene" uid="uid://brjl1d45gl455" path="res://Component/health_component.tscn" id="1_vvw5e"]
+[ext_resource type="Resource" uid="uid://wftd8cqvx4gi" path="res://Ressource/Player_inventory.tres" id="2_6ysni"]
 [ext_resource type="Texture2D" uid="uid://r17vaofxxqde" path="res://Sprite/Astronaute_right.png" id="2_8g4oa"]
 [ext_resource type="PackedScene" uid="uid://b8gka0iivukyi" path="res://Component/hitbox_component.tscn" id="2_inwu4"]
 [ext_resource type="PackedScene" uid="uid://l8qhlw52wqqd" path="res://Player/Inventory/inv_ui.tscn" id="4_ddoul"]
@@ -17,20 +18,18 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_vlldt"]
-points = PackedVector2Array(22, 64, -12, 64, -12, 20, -21, 20, -26, 16, -26, -25, -20, -31, -10, -32, -16, -42, -16, -51, -9, -61, -3, -64, 6, -64, 12, -61, 19, -51, 19, -42, 12, -32, 17, -25, 17, 19, 15, 21, 15, 55, 22, 59)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1rgi"]
 radius = 17.0
 height = 128.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_tok1r")
+inv = ExtResource("2_6ysni")
 speed = 300.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(2, 0)
+position = Vector2(3, 0)
 sprite_frames = SubResource("SpriteFrames_6ysni")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
@@ -42,16 +41,10 @@ Max_health = 10
 hp_comp = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-visible = false
-position = Vector2(-4, 0)
-shape = SubResource("ConvexPolygonShape2D_vlldt")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(-3, 0)
+position = Vector2(-1, 0)
 shape = SubResource("CapsuleShape2D_s1rgi")
 
 [node name="Inv_ui" parent="." instance=ExtResource("4_ddoul")]
-process_mode = 3
 custom_minimum_size = Vector2(192, 80)
 offset_left = -384.0
 offset_top = -160.0

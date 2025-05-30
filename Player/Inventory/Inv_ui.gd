@@ -1,20 +1,20 @@
 extends Control
 
 
-@onready var inv :Inv = preload("res://Resource/Player_inventory.tres")
+@onready var inv :Inv = preload("res://Ressource/Player_inventory.tres")
 @onready var inv_slots :Array = $Inventaire/GridContainer.get_children()
 @onready var equipment_slots :Array = $Equipement/GridContainer.get_children()
-@onready var active_slots :Array = $Action_bar.get_children()
+@onready var active_slots :Array = $Action_bar/GridContainer.get_children()
 
 var is_open = false
 var slot_from :Panel = null
+var slot_from_index :int = -1
 
 signal update_player_stat(player_stat :Player_stat)
 
 
 func _ready() -> void:
 	inv.update.connect(update_slots)
-	
 	for s in inv_slots:
 		s.pressed.connect(drag_and_drop)
 	for s in equipment_slots:
@@ -40,7 +40,7 @@ func update_slots() -> void:
 		equipment_slots[i].update(inv.equipment_slots[i])
 	for i in range(min(inv.active_slots.size(), active_slots.size())):
 		active_slots[i].update(inv.active_slots[i])
-
+	
 
 func open() -> void:
 	is_open = true
@@ -56,26 +56,45 @@ func close() -> void:
 	get_tree().paused = false
 
 	
+func parent_name(panel :Panel):
+	var parent_name = panel.get_parent().get_parent().name
+	match parent_name:
+		"Inventaire" : return inv.inv_slots
+		"Equipement" : return inv.equipment_slots
+		"Action_bar" : return inv.active_slots
 	
-func drag_and_drop(slot :Panel) -> void:
 	
+func drag_and_drop(slot_to :Panel) -> void:
+	var panel_index :int = int(str(slot_to.name).get_slice("t", 1))
+	
+	if slot_from == null && parent_name(slot_to)[panel_index-1].item.name == "":
+		return
+
 	if slot_from == null:
-		slot_from = slot
+		slot_from = slot_to
+		slot_from_index = panel_index -1
 		return
 		
-	var temp_slot :Panel = slot_from
+	var slot_to_index = panel_index -1
+	
+	var inv_from :Array[InvSlot] = parent_name(slot_from)
+	var inv_to :Array[InvSlot] = parent_name(slot_to)
 	
 	# Gère le moment ou on veut mettre un item dans un slot d'equipement
-	if slot.get_parent().get_parent() == $Equipement:
-		if !(slot_from.item.type == 1) :
+	if slot_to.get_parent().get_parent() == $Equipement:
+		if !(inv_to[slot_to_index].item.type == 1) :
 			slot_from = null
+			slot_from_index = -1
 			return
 	
-		update_player_stat.emit(slot_from.stat)
-		
-	slot_from = slot
-	slot = temp_slot
+		update_player_stat.emit(inv_to[slot_to_index].item.stat)
+
+	var temp_slot :InvSlot = inv_from[slot_from_index]
+	inv_from[slot_from_index] = inv_to[slot_to_index]
+	inv_to[slot_to_index] = temp_slot
 	
 	slot_from = null
+	slot_from_index = -1
+	
 
 	update_slots()

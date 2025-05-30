@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://f27c7wsqnou5" path="res://Player/Inventory/inv_ui_slot.tscn" id="3_h7x6q"]
 
 [node name="Inv_ui" type="Control"]
+process_mode = 3
 z_index = 11
 texture_filter = 1
 custom_minimum_size = Vector2(128, 90)
@@ -172,26 +173,30 @@ offset_right = 196.0
 offset_bottom = 112.0
 alignment = 1
 
-[node name="Inv_UI_slot1" parent="Action_bar" instance=ExtResource("3_h7x6q")]
+[node name="GridContainer" type="GridContainer" parent="Action_bar"]
+layout_mode = 2
+columns = 100
+
+[node name="Inv_UI_slot1" parent="Action_bar/GridContainer" instance=ExtResource("3_h7x6q")]
 layout_mode = 2
 
-[node name="Inv_UI_slot2" parent="Action_bar" instance=ExtResource("3_h7x6q")]
+[node name="Inv_UI_slot2" parent="Action_bar/GridContainer" instance=ExtResource("3_h7x6q")]
 layout_mode = 2
 
-[node name="Inv_UI_slot3" parent="Action_bar" instance=ExtResource("3_h7x6q")]
+[node name="Inv_UI_slot3" parent="Action_bar/GridContainer" instance=ExtResource("3_h7x6q")]
 layout_mode = 2
 
-[node name="Inv_UI_slot4" parent="Action_bar" instance=ExtResource("3_h7x6q")]
+[node name="Inv_UI_slot4" parent="Action_bar/GridContainer" instance=ExtResource("3_h7x6q")]
 layout_mode = 2
 
-[node name="Inv_UI_slot5" parent="Action_bar" instance=ExtResource("3_h7x6q")]
+[node name="Inv_UI_slot5" parent="Action_bar/GridContainer" instance=ExtResource("3_h7x6q")]
 layout_mode = 2
 
-[node name="Inv_UI_slot6" parent="Action_bar" instance=ExtResource("3_h7x6q")]
+[node name="Inv_UI_slot6" parent="Action_bar/GridContainer" instance=ExtResource("3_h7x6q")]
 layout_mode = 2
 
-[node name="Inv_UI_slot7" parent="Action_bar" instance=ExtResource("3_h7x6q")]
+[node name="Inv_UI_slot7" parent="Action_bar/GridContainer" instance=ExtResource("3_h7x6q")]
 layout_mode = 2
 
-[node name="Inv_UI_slot8" parent="Action_bar" instance=ExtResource("3_h7x6q")]
+[node name="Inv_UI_slot8" parent="Action_bar/GridContainer" instance=ExtResource("3_h7x6q")]
 layout_mode = 2

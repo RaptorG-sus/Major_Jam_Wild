@@ -26,7 +26,7 @@ func terrain_generation():
 		var ground = abs(noise.get_noise_2d(x,0)*10)                                                # genere les petites buttes de terre permettant un monde plus agréable ( * 10 pour des buttes plus abruptes)
 		for y in range(ground,500):
 			if noise.get_noise_2d(x,y) > earth_value:                                               # genere en fonction du noise et aura plus ou moins de terre dependant de earthvalue
-				map.set_cell(0,Vector2i(x,y),1,block)                                               # pose les blocks
+				map.set_cell(0,Vector2i(x,y),0,block)                                               # pose les blocks
 
 
 func tree_generation():
@@ -37,7 +37,7 @@ func tree_generation():
 				while map.get_cell_atlas_coords(0,Vector2i(x,y)) != block:                          # pour poser le block au plus bas possible jusqu'a la hauteur voulue (suite du while)
 					y+=1
 				for i in range(10):
-					map.set_cell(0,Vector2i(x,-i+(y-1)),4,Vector2i(0,0),1)                            # à remplacer par "load_scene_arbre(coord x, y patati patata)
+					map.set_cell(0,Vector2i(x,-i+(y-1)),2,Vector2i(0,0),1)                            # à remplacer par "load_scene_arbre(coord x, y patati patata)
 
 func ore_generation():
 	noise.seed = seed_ore                                                                           # genere prend une nouvelle seed pour les minerais
@@ -46,4 +46,4 @@ func ore_generation():
 		for y in range(up_ore,500):                                                                 # generation en y
 			if noise.get_noise_2d(x,y) > ore_value and map.get_cell_atlas_coords(0,Vector2i(x,y)) == block:                 # placement des minerais
 				map.erase_cell(0,Vector2i(x,y))
-				map.set_cell(0,Vector2i(x,y),3,Vector2i.ZERO,1)
+				map.set_cell(0,Vector2i(x,y),1,Vector2i.ZERO,1)
