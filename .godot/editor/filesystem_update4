@@ -6,3 +6,8 @@ res://Component/health_component.tscn
 res://Player/Player.gd
 res://Player/Player.tscn
 res://Resource/Player_inventory.tres
+res://world/supp_world/all_ore/ore_gen/gen_ore.tscn
+res://world/supp_world/all_ore/ore_gen/gen_ore.gd
+res://world/supp_world/all_ore/ore_gen/gen_ore_break.tscn
+res://world/supp_world/nature/all_tree/tree_gen/tree_gen.gd
+res://world/supp_world/nature/all_tree/tree_gen/treeGen.tscn
