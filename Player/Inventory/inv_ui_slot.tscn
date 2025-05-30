@@ -1,24 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://f27c7wsqnou5"]
+[gd_scene load_steps=2 format=3 uid="uid://f27c7wsqnou5"]
 
-[ext_resource type="Script" uid="uid://bfvtwrgad0f4" path="res://Code/Scene/Player/Inventory/inv_ui_slot.gd" id="1_eduqw"]
-[ext_resource type="Texture2D" uid="uid://csq6ywivw5da2" path="res://Code/Sprit/Inventory/Slot.png" id="1_mti2w"]
-
-[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_pgqnj"]
-
-[sub_resource type="Shortcut" id="Shortcut_tknws"]
-events = [SubResource("InputEventMouseButton_pgqnj")]
+[ext_resource type="Script" uid="uid://bfvtwrgad0f4" path="res://Player/Inventory/inv_ui_slot.gd" id="1_eduqw"]
 
 [node name="Inv_UI_slot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(16, 16)
 offset_right = 16.0
 offset_bottom = 16.0
-scale = Vector2(1.5, 1)
 mouse_filter = 2
 script = ExtResource("1_eduqw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_mti2w")
 centered = false
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -32,7 +24,7 @@ mouse_filter = 2
 self_modulate = Color(1, 1, 1, 0.25098)
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-shortcut = SubResource("Shortcut_tknws")
+keep_pressed_outside = true
 
 [node name="Panel" type="Panel" parent="CenterContainer"]
 layout_mode = 2

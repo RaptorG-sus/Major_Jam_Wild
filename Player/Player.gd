@@ -10,6 +10,8 @@ var axe :PackedScene = null
 var pickaxe :PackedScene = null
 
 
+# Les stats du player
+var player_stat :Player_stat = Player_stat.new()
 # Gère la direction du player 
 var direction :float = 0
 var direction2 :=Vector2.ZERO
@@ -21,10 +23,22 @@ var can_attack :bool = true
 var taille_sprite :int = 64
 
 
+func _ready() -> void:
+	if !($Inv_ui.update_player_stat.is_connected(stat_update)):
+		$Inv_ui.update_player_stat.connect(stat_update)
+		
+	player_stat.hp = 10
+	player_stat.armor = 0
+	player_stat.speed = speed
+	
+	
+	$HealthComponent.Max_health = player_stat.hp
+
+
 func _physics_process(delta: float) -> void:
 	# Gère la vitesse ( 64 totalement arbitraire )
-	#velocity = delta * Vector2(direction, 1) * speed * taille_sprite
-	velocity = delta * direction2 * speed * taille_sprite
+	#velocity = delta * Vector2(direction, 1) * player_stat.speed * taille_sprite
+	velocity = delta * direction2 * player_stat.speed * taille_sprite
 	move_and_slide()
 
 
@@ -57,3 +71,9 @@ func attack() -> void:
 
 func _on_attack_end() -> void:
 	can_attack = true
+
+
+func stat_update(stat :Player_stat) ->void:
+	player_stat.hp = stat.hp
+	player_stat.armor = stat.armor
+	player_stat.speed = stat.speed

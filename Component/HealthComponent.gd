@@ -11,7 +11,7 @@ var hp : float
 
 func _ready() -> void:
 	hp = Max_health
-	#Health_bar.hide()
+	Health_bar.hide()
 	Health_bar.max_value = Max_health
 	Health_bar.value = Health_bar.max_value
 	
@@ -28,7 +28,8 @@ func damage(attack :Attack) -> void:
 		
 
 		#parent.destroy()
-
+		if parent is block:
+			parent.break_tree()
 		parent.queue_free()
 
 	
