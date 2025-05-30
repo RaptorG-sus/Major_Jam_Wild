@@ -17,6 +17,7 @@ func _ready() -> void:
 	terrain_generation()
 	tree_generation()
 	ore_generation()
+	back_ground()
 	
 	
 func terrain_generation():
@@ -46,3 +47,16 @@ func ore_generation():
 			if noise.get_noise_2d(x,y) > ore_value and map.get_cell_source_id(0,Vector2i(x,y)) == 0:                 # placement des minerais
 				map.erase_cell(0,Vector2i(x,y))
 				map.set_cell(0,Vector2i(x,y),1,Vector2i.ZERO,1)
+
+func back_ground():
+	noise.seed = seed_world
+	for x in range(range_generation):
+		var y = 0
+		var flag_background = true
+		while flag_background:
+			if map.get_cell_source_id(0,Vector2i(x,y)) == 0:
+				flag_background = false
+			else:
+				y += 1
+		for i in range(y,500):
+			map.set_cell(1,Vector2i(x,i),3,Vector2i.ZERO)
