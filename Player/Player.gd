@@ -10,7 +10,7 @@ var tools :PackedScene = preload("res://Player/Interaction/tools.tscn")
 var axe :PackedScene = null
 var pickaxe :PackedScene = null
 
-var tools_name :String = ""
+var usable :InvItem = null
 
 
 # Gère la direction du player 
@@ -54,27 +54,39 @@ func _input(event: InputEvent) -> void:
 			animation.set_frame(0)
 	"""
 	# Gère l'attaque du joueur
-	if event.is_action_pressed("Interaction") and can_attack:
+	if event.is_action_pressed("Interaction"):
+		match usable.item_data:
+			ItemData : pass
+			AttackData : attack()
+			ArmorData : return
+			HealData : heal()
 		can_attack = false
 		attack()
 		
 # Génère la scene associer à l'outil pour mettre des dégats aux features
 func attack() -> void:
-	var player_attack 
-	match tools_name:
-		"axe" : player_attack = axe.instantiate()
-		"pickaxe" : player_attack = pickaxe.instantiate()
-		"*" : return
-		
-	player_attack.attack_end.connect(_on_attack_end)
-	add_child(player_attack)
+	if can_attack:
+		var player_attack 
+		match usable.name:
+			"axe" : player_attack = axe.instantiate()
+			"pickaxe" : player_attack = pickaxe.instantiate()
+			"*" : return
+			
+		player_attack.attack_end.connect(_on_attack_end)
+		add_child(player_attack)
 
-	player_attack.look_at(get_global_mouse_position())
+		player_attack.look_at(get_global_mouse_position())
 
 
 func _on_attack_end() -> void:
-	if tools_name != "":
+	if usable != null:
 		can_attack = true
+
+func heal() -> void:
+	var item = usable.item_data
+	usable = null
+	$HealthComponent.heal(item)
+	
 
 
 func stat_update(stat :ArmorData) ->void:
@@ -85,19 +97,10 @@ func stat_update(stat :ArmorData) ->void:
 
 func full_usable(slot :InvSlot) -> void:
 	if slot != null && slot.item != null:
-		# Armes
-		if slot.item.item_data is AttackData:
-			tools_name = slot.item.name
-			can_attack = true
-		# Heal
-		elif slot.item.item_data is ArmorData:
-			pass
-		else:
-			# Reste (loot ... )
-			tools_name = ""
+		usable = slot.item
 	else:
 		# Reste (loot ... )
-		tools_name = ""
+		usable = null
 	
 func collect(item) -> void:
 	inv.insert(item)

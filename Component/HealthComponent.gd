@@ -22,6 +22,9 @@ func damage(attack :AttackData) -> void:
 	Health_bar.show()
 	Health_bar.value = hp
 	
+	if (hp > Max_health):
+		hp = Max_health
+	
 	if hp <= 0:
 
 		var parent = get_parent()
@@ -31,7 +34,18 @@ func damage(attack :AttackData) -> void:
 			parent.break_tree()
 		parent.queue_free()
 
-	
+
+func heal(item :HealData):
+
+	var boucle = item.heal_time
+	var add_hp :float = item.heal/item.heal_time
+	while (boucle > 0):
+		hp += add_hp
+		boucle -= 1
+		
+	if (hp > Max_health):
+		hp = Max_health
+
 	
 func loot_spawn(parent) -> void:
 	
