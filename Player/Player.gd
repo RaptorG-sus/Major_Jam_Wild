@@ -12,6 +12,7 @@ var pickaxe :PackedScene = null
 
 # Gère la direction du player 
 var direction :float = 0
+var direction2 :=Vector2.ZERO
 # L'outil ou arme en main du player
 var actual_scene :PackedScene = tools
 # Pour éviter de spamer
@@ -22,13 +23,15 @@ var taille_sprite :int = 64
 
 func _physics_process(delta: float) -> void:
 	# Gère la vitesse ( 64 totalement arbitraire )
-	velocity = delta * Vector2(direction, 1) * speed * taille_sprite
+	#velocity = delta * Vector2(direction, 1) * speed * taille_sprite
+	velocity = delta * direction2 * speed * taille_sprite
 	move_and_slide()
 
 
 func _input(event: InputEvent) -> void:
 	# Gère la direction de démplacement du perso ( 4 point cardinaux )
-	direction = Input.get_axis("gauche", "droite")
+	#direction = Input.get_axis("gauche", "droite")
+	direction2 = Input.get_vector("gauche", "droite", "haut", "bas")
 		
 	# Gère l'animation du joueur, en fonction de ses déplacements ( en com pour l'instant )
 	"""	match(direction):
