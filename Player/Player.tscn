@@ -13,9 +13,7 @@ speed = 100.0
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_vvw5e")]
-script = null
+Max_health = 10
 
-[node name="HitboxComponent" parent="." instance=ExtResource("2_inwu4")]
-script = null
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("hp_comp") instance=ExtResource("2_inwu4")]
+hp_comp = NodePath("../HealthComponent")
