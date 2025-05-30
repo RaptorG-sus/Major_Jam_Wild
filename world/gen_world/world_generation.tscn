@@ -95,5 +95,4 @@ texture = SubResource("NoiseTexture2D_38ibh")
 [node name="Player" parent="." instance=ExtResource("3_ik7gn")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(0.5, 0.5)
 script = ExtResource("5_j5epj")

@@ -25,7 +25,9 @@ hp_comp = NodePath("../HealthComponent")
 shape = SubResource("CircleShape2D_tok1r")
 
 [node name="Inv_ui" parent="." instance=ExtResource("4_ddoul")]
-offset_left = -64.0
+custom_minimum_size = Vector2(192, 80)
+offset_left = -96.0
 offset_top = -128.0
-offset_right = 64.0
-offset_bottom = -38.0
+offset_right = 96.0
+offset_bottom = -48.0
+metadata/_edit_use_anchors_ = true

@@ -1,4 +1,5 @@
-res://Player
 res://Component
+res://Player/Inventory
+res://Player
 res://debug
 res://world/gen_world

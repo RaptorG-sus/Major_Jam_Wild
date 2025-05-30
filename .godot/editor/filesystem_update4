@@ -12,3 +12,10 @@ res://world/gen_world/world_generation.gd
 res://Player/Inventory/inv_ui.tscn
 res://Player/Inventory/Inv_ui.gd
 res://Resource/Player_inventory.tres
+res://Player/Inventory/inv_ui_slot.tscn
+res://Player/Inventory/equip_ui_slot.gd
+res://Player/Inventory/equip_ui_slot.tscn
+res://Component/Player_stat.gd
+res://Player/Inventory/Inventory_item.gd
+res://Player/Inventory/Inventory_slot.gd
+res://Player/Inventory/Inventory.gd
