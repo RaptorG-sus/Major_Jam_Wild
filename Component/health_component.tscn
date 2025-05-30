@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://brjl1d45gl455"]
+
+[ext_resource type="Script" uid="uid://b8ox4pvsbv8w" path="res://Component/HealthComponent.gd" id="1_d8t0y"]
+
+[node name="HealthComponent" type="Node2D"]
+script = ExtResource("1_d8t0y")
+
+[node name="ColorDark" type="ColorRect" parent="."]
+z_index = 1
+offset_left = -5.0
+offset_top = 6.0
+offset_right = 5.0
+offset_bottom = 7.0
+color = Color(0, 0, 0, 1)
+
+[node name="ColorGreen" type="ColorRect" parent="."]
+z_index = 1
+offset_left = -5.0
+offset_top = 6.0
+offset_right = 5.0
+offset_bottom = 7.0
+color = Color(0, 1, 0, 1)

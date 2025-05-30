@@ -1,0 +1,10 @@
+res://world/gen_world/world_generation.tscn
+res://Component/health_component.tscn
+res://Component/hitbox_component.tscn
+res://Player/tools.gd
+res://Component/HealthComponent.gd
+res://Component/HitboxComponent.gd
+res://Player/Player.gd
+res://Player/Player.tscn
+res://Player/tools.tscn
+res://Player/Interaction/tools.tscn
