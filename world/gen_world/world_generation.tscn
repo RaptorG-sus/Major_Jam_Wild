@@ -1,10 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://bopmtpnbqnl3b"]
+[gd_scene load_steps=16 format=3 uid="uid://bopmtpnbqnl3b"]
 
 [ext_resource type="Script" uid="uid://dqb7uf8h0vs7e" path="res://world/gen_world/world_generation.gd" id="1_38ibh"]
 [ext_resource type="PackedScene" uid="uid://dmw5oat3pdiu8" path="res://world/supp_world/terrain/block_gen/block_gen.tscn" id="2_j5epj"]
 [ext_resource type="PackedScene" uid="uid://2c4efy4dim1" path="res://world/supp_world/nature/all_tree/tree_gen/treeGen.tscn" id="4_8jo56"]
 [ext_resource type="PackedScene" uid="uid://60jwa58ougx0" path="res://world/supp_world/all_ore/ore_gen/gen_ore.tscn" id="4_j5epj"]
 [ext_resource type="PackedScene" uid="uid://b3yxgbv2s7qf3" path="res://Player/Player.tscn" id="4_quu78"]
+[ext_resource type="Texture2D" uid="uid://cduxsx3gr73ep" path="res://Sprite/background/planet_001/back_ground_first_planet.png" id="6_8jo56"]
+[ext_resource type="Texture2D" uid="uid://v8y1y3uwh3pm" path="res://Sprite/background/planet_001/back_ground_sous_terre.png" id="6_nrbq6"]
+[ext_resource type="Texture2D" uid="uid://baghiuchy0dlu" path="res://Sprite/background/planet_001/back_ground_tgree_002_first_planet.png" id="7_6um31"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_nrbq6"]
 scenes/1/scene = ExtResource("2_j5epj")
@@ -15,10 +18,15 @@ scenes/1/scene = ExtResource("4_j5epj")
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6um31"]
 scenes/1/scene = ExtResource("4_8jo56")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8jo56"]
+texture = ExtResource("6_nrbq6")
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_nrbq6"]
 sources/1 = SubResource("TileSetScenesCollectionSource_8jo56")
 sources/2 = SubResource("TileSetScenesCollectionSource_6um31")
 sources/0 = SubResource("TileSetScenesCollectionSource_nrbq6")
+sources/3 = SubResource("TileSetAtlasSource_8jo56")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_41bai"]
 
@@ -29,13 +37,37 @@ noise = SubResource("FastNoiseLite_41bai")
 script = ExtResource("1_38ibh")
 
 [node name="TileMap" type="TileMap" parent="."]
+z_index = 5
 tile_set = SubResource("TileSet_nrbq6")
 format = 2
+layer_1/name = "Layer1"
+layer_1/z_index = -1
 
 [node name="Noise" type="Sprite2D" parent="."]
 visible = false
 texture = SubResource("NoiseTexture2D_li1ka")
 
 [node name="Player" parent="." instance=ExtResource("4_quu78")]
+z_index = 5
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2(576, 324)
+transform = Transform2D(1, 0, 0, 1, 576, 324)
+
+[node name="ParallaxBg" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxBg"]
+scale = Vector2(5, 5)
+texture = ExtResource("6_8jo56")
+
+[node name="ParallaxTree001" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(0, -100)
+motion_scale = Vector2(0.5, 0.25)
+motion_mirroring = Vector2(1000, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxTree001"]
+scale = Vector2(8, 8)
+texture = ExtResource("7_6um31")
