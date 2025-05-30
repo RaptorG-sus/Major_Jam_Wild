@@ -56,9 +56,27 @@ func close() -> void:
 	get_tree().paused = false
 
 	
+func parent_name(panel :Panel):
+	var parent_name = panel.get_parent().get_parent().name
+	match parent_name:
+		"Inventaire" : return inv.inv_slots
+		"Equipement" : return inv.equipment_slots
+		"Action_bar" : return inv.active_slots
 	
-func drag_and_drop(slot :Panel) -> void:
 	
+func slot_interaction(slot_to :Panel) -> void:
+	if is_open:
+		drag_and_drop(slot_to)
+	else:
+		pass
+	
+	
+func drag_and_drop(slot_to :Panel) -> void:
+	var panel_index :int = int(str(slot_to.name).get_slice("t", 1))
+	
+	if slot_from == null && parent_name(slot_to)[panel_index-1].item == null:
+		return
+
 	if slot_from == null:
 		slot_from = slot_to
 		slot_from_index = panel_index -1
@@ -83,5 +101,6 @@ func drag_and_drop(slot :Panel) -> void:
 	inv_to[slot_to_index] = temp_slot
 	
 	slot_from = null
+	slot_from_index = -1
 
 	update_slots()
