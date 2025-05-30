@@ -16,11 +16,11 @@ signal update_player_stat(player_stat :Player_stat)
 func _ready() -> void:
 	inv.update.connect(update_slots)
 	for s in inv_slots:
-		s.pressed.connect(drag_and_drop)
+		s.pressed.connect(slot_interaction)
 	for s in equipment_slots:
-		s.pressed.connect(drag_and_drop)
+		s.pressed.connect(slot_interaction)
 	for s in active_slots:
-		s.pressed.connect(drag_and_drop)
+		s.pressed.connect(slot_interaction)
 		
 	update_slots()
 	close()
@@ -64,6 +64,13 @@ func parent_name(panel :Panel):
 		"Action_bar" : return inv.active_slots
 	
 	
+func slot_interaction(slot_to :Panel) -> void:
+	if is_open:
+		drag_and_drop(slot_to)
+	else:
+		pass
+	
+	
 func drag_and_drop(slot_to :Panel) -> void:
 	var panel_index :int = int(str(slot_to.name).get_slice("t", 1))
 	
@@ -95,6 +102,5 @@ func drag_and_drop(slot_to :Panel) -> void:
 	
 	slot_from = null
 	slot_from_index = -1
-	
 
 	update_slots()
