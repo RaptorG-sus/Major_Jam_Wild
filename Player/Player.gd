@@ -32,7 +32,7 @@ func _input(event: InputEvent) -> void:
 	# Gère la direction de démplacement du perso ( 4 point cardinaux )
 	#direction = Input.get_axis("gauche", "droite")
 	direction2 = Input.get_vector("gauche", "droite", "haut", "bas")
-		
+	direction2.normalized()
 	# Gère l'animation du joueur, en fonction de ses déplacements ( en com pour l'instant )
 	"""	match(direction):
 		1: animation.play("Sprit_right")
@@ -52,7 +52,7 @@ func attack() -> void:
 	player_attack.attack_end.connect(_on_attack_end)
 	add_child(player_attack)
 
-	player_attack.look_at(Vector2(direction, 0))
+	player_attack.look_at(get_global_mouse_position())
 
 
 func _on_attack_end() -> void:

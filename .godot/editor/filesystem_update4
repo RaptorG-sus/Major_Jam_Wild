@@ -9,3 +9,6 @@ res://Player/Player.tscn
 res://Player/tools.tscn
 res://Player/Interaction/tools.tscn
 res://world/gen_world/world_generation.gd
+res://Player/Inventory/inv_ui.tscn
+res://Player/Inventory/Inv_ui.gd
+res://Resource/Player_inventory.tres
