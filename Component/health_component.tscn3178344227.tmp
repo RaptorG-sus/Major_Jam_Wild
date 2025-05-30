@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://brjl1d45gl455"]
+
+[ext_resource type="Script" uid="uid://b8ox4pvsbv8w" path="res://Component/HealthComponent.gd" id="1_d8t0y"]
+
+[node name="HealthComponent" type="Node2D"]
+script = ExtResource("1_d8t0y")
+
+[node name="Health_bar" type="ProgressBar" parent="."]
+texture_filter = 1
+offset_left = -45.0
+offset_top = 80.0
+offset_right = 45.0
+offset_bottom = 112.0
+step = 0.1

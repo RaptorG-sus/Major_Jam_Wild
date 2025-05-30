@@ -10,8 +10,8 @@ var is_open = false
 var slot_from :Panel = null
 var slot_from_index :int = -1
 
-signal update_player_stat(player_stat :Player_stat)
-
+signal update_player_stat(player_stat :ArmorData)
+signal usable(slot :InvSlot)
 
 func _ready() -> void:
 	inv.update.connect(update_slots)
@@ -68,7 +68,8 @@ func slot_interaction(slot_to :Panel) -> void:
 	if is_open:
 		drag_and_drop(slot_to)
 	else:
-		pass
+		var panel_index :int = int(str(slot_to.name).get_slice("t", 1))
+		usable.emit(parent_name(slot_to)[panel_index -1])
 	
 	
 func drag_and_drop(slot_to :Panel) -> void:

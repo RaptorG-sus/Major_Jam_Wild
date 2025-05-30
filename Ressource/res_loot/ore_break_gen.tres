@@ -8,7 +8,4 @@ script = ExtResource("1_71w6x")
 type = 0
 name = "ore_break_gen"
 texture = ExtResource("2_mglte")
-hp = 0
-armor = 0
-speed = 0.0
 metadata/_custom_type_script = "uid://brsevjhy453jg"
