@@ -5,6 +5,7 @@ extends Node2D
 @onready var seed_world :int = randi_range(1, 65536)
 @onready var seed_ore :int = randi_range(1,256)
 
+var tree_01 : PackedScene = load("res://world/supp_world/nature/all_tree/tree_gen/all_tree/tree001.tscn")
 var earth_value : float = -0.25                                                                     # pour plus ou moins de grotte / rocher volant
 var ore_value : float = 0.3
 var tree_percentage : int = 5                                                                       # pourcentage d'arbre permettant changeant en fonction de la planete
@@ -36,8 +37,11 @@ func tree_generation() -> void:
 				var y :int = 0
 				while map.get_cell_source_id(0,Vector2i(x,y)) != 0:                          # pour poser le block au plus bas possible jusqu'a la hauteur voulue (suite du while)
 					y+=1
+				var tree : Node2D = tree_01.instantiate()
+				self.add_child(tree)
+				tree.position = Vector2i(x*32,(y-10)*32)
 				for i in range(10):
-					map.set_cell(0,Vector2i(x,-i+(y-1)),2,Vector2i(0,0),1)                            # à remplacer par "load_scene_arbre(coord x, y patati patata)
+					tree.get_node("TileMap").set_cell(0,Vector2i(0,i),0,Vector2i(0,0),1)                            # à remplacer par "load_scene_arbre(coord x, y patati patata)
 
 func ore_generation() -> void:
 	noise.seed = seed_ore                                                                           # genere prend une nouvelle seed pour les minerais
