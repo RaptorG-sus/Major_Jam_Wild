@@ -1,7 +1,7 @@
 extends Node2D
 class_name HealthComponent
 
-@onready var loot_scene :PackedScene = preload("res://world/supp_world/loot/base_loot.tscn")
+@onready var loot_scene :PackedScene = preload("res://loot/base_loot.tscn")
 @onready var Health_bar = $Health_bar
 
 @export var Max_health :int
@@ -32,7 +32,10 @@ func damage(attack :AttackData) -> void:
 		#parent.destroy()
 		if parent is block:
 			parent.break_tree()
-		parent.queue_free()
+		elif parent is Ore:
+			loot_spawn(parent)
+		else:
+			parent.queue_free()
 
 
 func heal(item :HealData):
@@ -49,14 +52,16 @@ func heal(item :HealData):
 	
 func loot_spawn(parent) -> void:
 	
-	var array_loot = parent.loot
+	# en construction
+	var array_loot = parent.all_loot
 	
 	for loot in array_loot:
 		var r = randi_range(-10, 10)
 		var s = randi_range(-10, 10)
 		var new_loot = loot_scene.instantiate()
+		new_loot.item = loot
 		$".."/"..".add_child(new_loot)
 		new_loot.global_position = global_position + Vector2(r,s)
-		new_loot.item = loot
+
 		
 	parent.queue_free()

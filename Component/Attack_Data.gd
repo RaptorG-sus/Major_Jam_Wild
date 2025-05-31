@@ -7,7 +7,7 @@ class_name AttackData
 @export var stun_time :float
 
 
-func _init(_attack_damage :float, _knockback_force :float, _stun_time :float ) -> void:
+func setup(_attack_damage :float, _knockback_force :float, _stun_time :float ) -> void:
 	attack_damage = _attack_damage
 	knockback_force = _knockback_force
 	stun_time = _stun_time

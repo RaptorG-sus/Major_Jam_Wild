@@ -1,12 +1,11 @@
 extends Node2D
 
-
-var attack_damage :float 
-var knockback_force :float 
-var stun_time :float
-
+@onready var item :InvItem
 
 signal attack_end()
+
+func _ready() -> void:
+	$Sprite2D.texture = item.texture
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
@@ -14,12 +13,12 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		
 		var hitbox :HitboxComponent = area
 		
-		var attack = AttackData.new(attack_damage, knockback_force, stun_time)
-		attack.attack_position = global_position
+		if item.item_data is AttackData:
+			var attack :AttackData = item.item_data
+			attack.attack_position = global_position
 
-		hitbox.damage(attack)
+			hitbox.damage(attack)
 
-
-func _on_animated_sprite_2d_animation_finished() -> void:
+func _on_timer_timeout() -> void:
 	attack_end.emit()
 	queue_free()

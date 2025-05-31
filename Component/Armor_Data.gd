@@ -5,7 +5,7 @@ class_name ArmorData
 @export var armor :int
 @export var speed :float
 
-func _init(_hp :int, _armor :int, _speed :float) -> void:
+func setup(_hp :int, _armor :int, _speed :float) -> void:
 	hp = _hp
 	armor = _armor
 	speed = _speed
