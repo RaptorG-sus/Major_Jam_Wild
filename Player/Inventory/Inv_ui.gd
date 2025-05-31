@@ -40,7 +40,7 @@ func update_slots() -> void:
 		equipment_slots[i].update(inv.equipment_slots[i])
 	for i in range(min(inv.active_slots.size(), active_slots.size())):
 		active_slots[i].update(inv.active_slots[i])
-	
+
 
 func open() -> void:
 	is_open = true

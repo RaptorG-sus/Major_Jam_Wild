@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://60jwa58ougx0"]
+[gd_scene load_steps=5 format=3 uid="uid://60jwa58ougx0"]
 
 [ext_resource type="Script" uid="uid://cbs0ugh3cjq1n" path="res://world/supp_world/all_block/gen_ore.gd" id="1_bkgow"]
-[ext_resource type="PackedScene" uid="uid://brjl1d45gl455" path="res://Component/health_component.tscn" id="2_50phm"]
 [ext_resource type="PackedScene" uid="uid://b8gka0iivukyi" path="res://Component/hitbox_component.tscn" id="3_l0up0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bkgow"]
@@ -20,13 +19,9 @@ script = ExtResource("1_bkgow")
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_bkgow")
 
-[node name="HealthComponent" parent="." instance=ExtResource("2_50phm")]
-visible = false
-
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("hp_comp") instance=ExtResource("3_l0up0")]
+[node name="HitboxComponent" parent="." instance=ExtResource("3_l0up0")]
 collision_layer = 32
 collision_mask = 0
-hp_comp = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_25fjo")

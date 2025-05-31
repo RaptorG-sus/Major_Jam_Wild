@@ -9,14 +9,15 @@ extends CharacterBody2D
 var axe :PackedScene = null
 var pickaxe :PackedScene = preload("res://Player/Interaction/pickaxe.tscn")
 
-@onready var usable :InvItem = preload("res://Ressource/res_item/pickaxe/pickaxe_test.tres")
+@onready var usable :InvItem = null
 
 
 # Gère la direction du player 
 var direction :float = 0
 var direction2 :=Vector2.ZERO
 # Pour éviter de spamer
-var can_attack :bool = true
+var can_attack :bool = false
+var can_move :bool = true
 # Modifie la vitesse en fonction de la taille du sprite du player
 var taille_sprite :int = 64
 
@@ -27,9 +28,9 @@ func _ready() -> void:
 	if !($Inv_ui.usable.is_connected(full_usable)):
 		$Inv_ui.usable.connect(full_usable)
 
-	player_stat.setup(10, 0, 300)
+	player_stat.setup(10, 0, 1000)
 
-	$HealthComponent.Max_health = player_stat.hp
+	$HitboxComponent.Max_health = player_stat.hp
 
 
 func _physics_process(delta: float) -> void:
@@ -41,10 +42,13 @@ func _physics_process(delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	# Gère la direction de démplacement du perso ( 4 point cardinaux )
-	#direction = Input.get_axis("gauche", "droite")
-	direction2 = Input.get_vector("gauche", "droite", "haut", "bas")
-	direction2.normalized()
-	
+	if can_move:
+		#direction = Input.get_axis("gauche", "droite")
+		direction2 = Input.get_vector("gauche", "droite", "haut", "bas")
+		direction2.normalized()
+	else :
+		direction2 = Vector2.ZERO
+		
 	# Gère l'animation du joueur, en fonction de ses déplacements ( en com pour l'instant )
 	"""	match(direction):
 		1: animation.play("Sprit_right")
@@ -55,13 +59,15 @@ func _input(event: InputEvent) -> void:
 	"""
 	# Gère l'attaque du joueur
 	if event.is_action_pressed("Interaction") && usable != null:
+		can_move = false
 		if usable.item_data is AttackData:
 			attack()
 		elif usable.item_data is HealData:
 			heal()
 		else :
+			can_move = true
 			# usable.item_data is ItemData or ArmorData
-			return 
+			pass 
 		
 		
 # Génère la scene associer à l'outil pour mettre des dégats aux features
@@ -88,11 +94,12 @@ func attack() -> void:
 func _on_attack_end() -> void:
 	if usable != null:
 		can_attack = true
+		can_move = true
 
 func heal() -> void:
 	var item :HealData = usable.item_data
 	usable = null
-	$HealthComponent.heal(item)
+	$HitboxComponent.heal(item)
 
 
 func stat_update(stat :ArmorData) ->void:

@@ -17,5 +17,5 @@ all_loot = Array[ExtResource("2_25fjo")]([SubResource("Resource_hbs87")])
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("1_ksll6")
 
-[node name="HealthComponent" parent="." index="2"]
+[node name="HitboxComponent" parent="." index="2"]
 Max_health = 1

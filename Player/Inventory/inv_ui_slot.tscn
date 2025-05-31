@@ -31,6 +31,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="Item_display" type="Sprite2D" parent="CenterContainer/Panel"]
+scale = Vector2(0.125, 0.125)
 
 [node name="Label" type="Label" parent="CenterContainer/Panel"]
 custom_minimum_size = Vector2(19, 23)

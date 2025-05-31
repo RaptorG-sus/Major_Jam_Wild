@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://2c4efy4dim1"]
+[gd_scene load_steps=5 format=3 uid="uid://2c4efy4dim1"]
 
 [ext_resource type="Script" uid="uid://bbg5sbx3wkt6j" path="res://world/supp_world/nature/all_tree/tree_gen/tree_gen.gd" id="1_hh7or"]
 [ext_resource type="Texture2D" uid="uid://ycnog4duo6dq" path="res://world/supp_world/nature/all_tree/tree_gen/tree_demo.png" id="2_anky4"]
-[ext_resource type="PackedScene" uid="uid://brjl1d45gl455" path="res://Component/health_component.tscn" id="3_ena2r"]
 [ext_resource type="PackedScene" uid="uid://b8gka0iivukyi" path="res://Component/hitbox_component.tscn" id="4_706jo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ena2r"]
@@ -14,11 +13,8 @@ script = ExtResource("1_hh7or")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_anky4")
 
-[node name="HealthComponent" parent="." instance=ExtResource("3_ena2r")]
-Max_health = 3
-
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("hp_comp") instance=ExtResource("4_706jo")]
-hp_comp = NodePath("../HealthComponent")
+[node name="HitboxComponent" parent="." instance=ExtResource("4_706jo")]
+Max_health = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_ena2r")

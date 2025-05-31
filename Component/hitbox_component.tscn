@@ -2,6 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dqx02bwt4dke" path="res://Component/HitboxComponent.gd" id="1_cmtnl"]
 
-[node name="HitboxComponent" type="Area2D" node_paths=PackedStringArray("hp_comp")]
+[node name="HitboxComponent" type="Area2D"]
 script = ExtResource("1_cmtnl")
-hp_comp = NodePath(".")
+
+[node name="Health_bar" type="ProgressBar" parent="."]
+texture_filter = 1
+offset_left = -45.0
+offset_top = 80.0
+offset_right = 45.0
+offset_bottom = 112.0
+step = 0.1
