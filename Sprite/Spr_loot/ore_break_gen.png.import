@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cduxsx3gr73ep"
-path="res://.godot/imported/back_ground_first_planet.png-d128ad1fefbb64a86ff1fa8e6cbc346b.ctex"
+uid="uid://ciwmkss3qobxp"
+path="res://.godot/imported/ore_break_gen.png-67bca71d14885ce756b4fe29bc07842d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite/background/planet_001/back_ground_first_planet.png"
-dest_files=["res://.godot/imported/back_ground_first_planet.png-d128ad1fefbb64a86ff1fa8e6cbc346b.ctex"]
+source_file="res://Sprite/Spr_loot/ore_break_gen.png"
+dest_files=["res://.godot/imported/ore_break_gen.png-67bca71d14885ce756b4fe29bc07842d.ctex"]
 
 [params]
 

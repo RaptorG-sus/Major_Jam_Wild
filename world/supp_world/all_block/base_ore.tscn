@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://60jwa58ougx0"]
 
-[ext_resource type="Script" uid="uid://cbs0ugh3cjq1n" path="res://world/supp_world/all_ore/gen_ore.gd" id="1_bkgow"]
+[ext_resource type="Script" uid="uid://cbs0ugh3cjq1n" path="res://world/supp_world/all_block/gen_ore.gd" id="1_bkgow"]
 [ext_resource type="PackedScene" uid="uid://brjl1d45gl455" path="res://Component/health_component.tscn" id="2_50phm"]
 [ext_resource type="PackedScene" uid="uid://b8gka0iivukyi" path="res://Component/hitbox_component.tscn" id="3_l0up0"]
 
@@ -30,5 +30,7 @@ hp_comp = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_25fjo")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

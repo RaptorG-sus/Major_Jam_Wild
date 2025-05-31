@@ -1,8 +1,7 @@
 extends Node2D
 class_name HealthComponent
 
-@onready var loot_scene :PackedScene = preload("res://loot/base_loot.tscn")
-@onready var Health_bar = $Health_bar
+@onready var Health_bar :ProgressBar = $Health_bar
 
 @export var Max_health :int
 
@@ -19,17 +18,13 @@ func _ready() -> void:
 func damage(attack :AttackData) -> void:
 	hp -= attack.attack_damage
 	
-	Health_bar.show()
 	Health_bar.value = hp
-	
-	if (hp > Max_health):
-		hp = Max_health
+	Health_bar.show()
 	
 	if hp <= 0:
 
-		var parent = get_parent()
+		var parent :Node2D = get_parent()
 		
-		#parent.destroy()
 		if parent is block:
 			parent.break_tree()
 		elif parent is Ore:
@@ -38,9 +33,9 @@ func damage(attack :AttackData) -> void:
 			parent.queue_free()
 
 
-func heal(item :HealData):
+func heal(item :HealData) -> void:
 
-	var boucle = item.heal_time
+	var boucle :float = item.heal_time
 	var add_hp :float = item.heal/item.heal_time
 	while (boucle > 0):
 		hp += add_hp
@@ -50,18 +45,21 @@ func heal(item :HealData):
 		hp = Max_health
 
 	
-func loot_spawn(parent) -> void:
+func loot_spawn(parent :Node2D) -> void:
 	
+	var loot_scene :PackedScene = preload("res://loot/base_loot.tscn")
 	# en construction
-	var array_loot = parent.all_loot
+	var array_loot :Array[InvSlot] = parent.all_loot
+	var grand_parent :Node2D = parent.get_parent()
 	
 	for loot in array_loot:
-		var r = randi_range(-10, 10)
-		var s = randi_range(-10, 10)
-		var new_loot = loot_scene.instantiate()
-		new_loot.item = loot
-		$".."/"..".add_child(new_loot)
-		new_loot.global_position = global_position + Vector2(r,s)
-
+		var gonna_loot :int = randi_range(0, 10)
+		if gonna_loot == 0: 
+			var new_loot :Node2D = loot_scene.instantiate()
+			var decalage :Vector2 = Vector2(randi_range(-8, 8), randi_range(-8, 8))
+			
+			new_loot.item = loot
+			grand_parent.add_child(new_loot)
+			new_loot.global_position = global_position + decalage
 		
 	parent.queue_free()

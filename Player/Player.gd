@@ -5,8 +5,6 @@ extends CharacterBody2D
 @onready var player_stat :ArmorData = ArmorData.new()
 # Les stats du player
 
-const _brut_attackdata = preload("res://Component/Attack_Data.gd")
-
 # Les scenes des outils de farm + arme de mélée
 var axe :PackedScene = null
 var pickaxe :PackedScene = preload("res://Player/Interaction/pickaxe.tscn")
@@ -70,7 +68,7 @@ func _input(event: InputEvent) -> void:
 func attack() -> void:
 	if can_attack:
 		can_attack = false
-		var player_attack 
+		var player_attack :Node2D
 		if usable.name.begins_with("axe"):
 			player_attack = axe.instantiate()
 		elif usable.name.begins_with("pickaxe"):
@@ -84,6 +82,7 @@ func attack() -> void:
 		add_child(player_attack)
 
 		player_attack.look_at(get_global_mouse_position())
+		player_attack.rotation_degrees -= 45
 
 
 func _on_attack_end() -> void:
@@ -91,10 +90,9 @@ func _on_attack_end() -> void:
 		can_attack = true
 
 func heal() -> void:
-	var item = usable.item_data
+	var item :HealData = usable.item_data
 	usable = null
 	$HealthComponent.heal(item)
-	
 
 
 func stat_update(stat :ArmorData) ->void:

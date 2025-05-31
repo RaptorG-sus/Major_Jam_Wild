@@ -11,11 +11,11 @@ signal update
 
 func insert(new_slot :InvSlot) -> void:
 	
-	var itemslots :Array[InvSlot] = inv_slots.filter(func(slot): return slot.item == new_slot.item)
+	var itemslots :Array[InvSlot] = inv_slots.filter(func(slot :InvSlot) -> bool: return slot.item == new_slot.item)
 	if !itemslots.is_empty():
 		itemslots[0].amount += new_slot.amount
 	else:
-		var emptyslots :Array[InvSlot] = inv_slots.filter(func(slot): return slot.item == null)
+		var emptyslots :Array[InvSlot] = inv_slots.filter(func(slot :InvSlot) -> bool: return slot.item == null)
 		if !emptyslots.is_empty():
 			emptyslots[0].item = new_slot.item
 			emptyslots[0].amount = new_slot.amount

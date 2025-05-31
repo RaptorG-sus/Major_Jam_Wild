@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7jhly4xjpsw0"
-path="res://.godot/imported/herbe_demo.png-ddc0537630308034514d4db6987cff33.ctex"
+uid="uid://baghiuchy0dlu"
+path="res://.godot/imported/back_ground_tgree_002_first_planet.png-213f787507d0c2535152bd2181100863.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://world/supp_world/terrain/block_gen/herbe_demo.png"
-dest_files=["res://.godot/imported/herbe_demo.png-ddc0537630308034514d4db6987cff33.ctex"]
+source_file="res://Sprite/Spr_background/planet_001/back_ground_tgree_002_first_planet.png"
+dest_files=["res://.godot/imported/back_ground_tgree_002_first_planet.png-213f787507d0c2535152bd2181100863.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ciwmkss3qobxp"
-path="res://.godot/imported/ore_break_gen.png-fd532a8a131093fcde109e0889f002ed.ctex"
+uid="uid://v8y1y3uwh3pm"
+path="res://.godot/imported/back_ground_sous_terre.png-2462008736104b17119143ae660cdff1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://loot/ore_gen/ore_break_gen.png"
-dest_files=["res://.godot/imported/ore_break_gen.png-fd532a8a131093fcde109e0889f002ed.ctex"]
+source_file="res://Sprite/Spr_background/planet_001/back_ground_sous_terre.png"
+dest_files=["res://.godot/imported/back_ground_sous_terre.png-2462008736104b17119143ae660cdff1.ctex"]
 
 [params]
 

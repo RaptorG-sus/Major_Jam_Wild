@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://v8y1y3uwh3pm"
-path="res://.godot/imported/back_ground_sous_terre.png-d941f2a61319aa937267a0a0be9f7cba.ctex"
+uid="uid://cdrdni4ixisfn"
+path="res://.godot/imported/back_ground_tree_001_first_planet.png-7dfe0d615a4a39695f9132c6a534664f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite/background/planet_001/back_ground_sous_terre.png"
-dest_files=["res://.godot/imported/back_ground_sous_terre.png-d941f2a61319aa937267a0a0be9f7cba.ctex"]
+source_file="res://Sprite/Spr_background/planet_001/back_ground_tree_001_first_planet.png"
+dest_files=["res://.godot/imported/back_ground_tree_001_first_planet.png-7dfe0d615a4a39695f9132c6a534664f.ctex"]
 
 [params]
 

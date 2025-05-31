@@ -3,7 +3,7 @@ extends Area2D
 
 @onready var item :InvSlot
 
-var player = null
+var player :CharacterBody2D = null
 
 func _ready() -> void:
 	$Sprite2D.texture = item.item.texture

@@ -4,20 +4,20 @@ extends Node2D
 
 signal attack_end()
 
+
 func _ready() -> void:
 	$Sprite2D.texture = item.texture
+
+
+func _process(delta: float) -> void:
+	rotation_degrees += 90 * delta * (1 / $Timer.wait_time )
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
 		
-		var hitbox :HitboxComponent = area
-		
-		if item.item_data is AttackData:
-			var attack :AttackData = item.item_data
-			attack.attack_position = global_position
-
-			hitbox.damage(attack)
+		item.item_data.attack_position = global_position
+		area.damage(item.item_data)
 
 func _on_timer_timeout() -> void:
 	attack_end.emit()

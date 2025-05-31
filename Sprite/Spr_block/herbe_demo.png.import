@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://baghiuchy0dlu"
-path="res://.godot/imported/back_ground_tgree_002_first_planet.png-e2e50c7b519f8e0b60eaf5433d1cfa47.ctex"
+uid="uid://b7jhly4xjpsw0"
+path="res://.godot/imported/herbe_demo.png-0cd4fb23bb896d92c786e5b7a408e5b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite/background/planet_001/back_ground_tgree_002_first_planet.png"
-dest_files=["res://.godot/imported/back_ground_tgree_002_first_planet.png-e2e50c7b519f8e0b60eaf5433d1cfa47.ctex"]
+source_file="res://Sprite/Spr_block/herbe_demo.png"
+dest_files=["res://.godot/imported/herbe_demo.png-0cd4fb23bb896d92c786e5b7a408e5b7.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdrdni4ixisfn"
-path="res://.godot/imported/back_ground_tree_001_first_planet.png-49311f866d16b3e2f6f764bb98d7ca4c.ctex"
+uid="uid://cduxsx3gr73ep"
+path="res://.godot/imported/back_ground_first_planet.png-99615f78b20bbac83b80b196603aa630.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite/background/planet_001/back_ground_tree_001_first_planet.png"
-dest_files=["res://.godot/imported/back_ground_tree_001_first_planet.png-49311f866d16b3e2f6f764bb98d7ca4c.ctex"]
+source_file="res://Sprite/Spr_background/planet_001/back_ground_first_planet.png"
+dest_files=["res://.godot/imported/back_ground_first_planet.png-99615f78b20bbac83b80b196603aa630.ctex"]
 
 [params]
 

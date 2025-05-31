@@ -4,7 +4,7 @@ extends Panel
 @onready var item_visual :Sprite2D = $CenterContainer/Panel/Item_display
 @onready var amount_text :Label = $CenterContainer/Panel/Label
 
-signal pressed(Panel)
+signal pressed(node :Panel)
 
 
 

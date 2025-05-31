@@ -6,7 +6,7 @@ extends Control
 @onready var equipment_slots :Array = $Equipement/GridContainer.get_children()
 @onready var active_slots :Array = $Action_bar/GridContainer.get_children()
 
-var is_open = false
+var is_open :bool = false
 var slot_from :Panel = null
 var slot_from_index :int = -1
 
@@ -15,11 +15,11 @@ signal usable(slot :InvSlot)
 
 func _ready() -> void:
 	inv.update.connect(update_slots)
-	for s in inv_slots:
+	for s :Panel in inv_slots:
 		s.pressed.connect(slot_interaction)
-	for s in equipment_slots:
+	for s :Panel in equipment_slots:
 		s.pressed.connect(slot_interaction)
-	for s in active_slots:
+	for s :Panel in active_slots:
 		s.pressed.connect(slot_interaction)
 		
 	update_slots()
@@ -56,13 +56,13 @@ func close() -> void:
 	get_tree().paused = false
 
 	
-func parent_name(panel :Panel):
-	var parent_name = panel.get_parent().get_parent().name
+func parent_name(panel :Panel) -> Array[InvSlot]:
+	var parent_name :String = panel.get_parent().get_parent().name
 	match parent_name:
 		"Inventaire" : return inv.inv_slots
 		"Equipement" : return inv.equipment_slots
 		"Action_bar" : return inv.active_slots
-	
+	return []
 	
 func slot_interaction(slot_to :Panel) -> void:
 	if is_open:
@@ -83,14 +83,14 @@ func drag_and_drop(slot_to :Panel) -> void:
 		slot_from_index = panel_index -1
 		return
 		
-	var slot_to_index = panel_index -1
+	var slot_to_index :int = panel_index -1
 	
 	var inv_from :Array[InvSlot] = parent_name(slot_from)
 	var inv_to :Array[InvSlot] = parent_name(slot_to)
 	
 	# Gère le moment ou on veut mettre un item dans un slot d'equipement
-	if slot_to.get_parent().get_parent() == $Equipement:
-		if !(inv_to[slot_to_index].item.type == 1) :
+	if slot_to.get_parent().get_parent() == $Equipement:		
+		if !(inv_from[slot_from_index].item.item_data is ArmorData) :
 			slot_from = null
 			slot_from_index = -1
 			return
