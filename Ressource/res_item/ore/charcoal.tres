@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://3yx8m7nk1wsw"]
+
+[ext_resource type="Script" uid="uid://brsevjhy453jg" path="res://SomeSystem/Inventory_Ststem/Inventory_item.gd" id="1_0dj2m"]
+[ext_resource type="Texture2D" uid="uid://bjenowfd7h53i" path="res://Sprite/Spr_block/ore_gen.png" id="2_dsv3u"]
+
+[resource]
+script = ExtResource("1_0dj2m")
+name = "charcoal"
+texture = ExtResource("2_dsv3u")
+metadata/_custom_type_script = "uid://brsevjhy453jg"

@@ -4,7 +4,7 @@ extends Control
 @onready var inv :Inv = PreloadData.inventory_preload
 @onready var inv_slots :Array = %Inventaire/GridContainer.get_children()
 @onready var equipment_slots :Array = %Equipement/GridContainer.get_children()
-@onready var active_slots :Array = %Action_bar/GridContainer.get_children()
+@onready var active_slots :Array = $Active_bar/GridContainer.get_children()
 
 var panel_from :Panel = null
 var slot_from_index :int = -1
@@ -37,43 +37,53 @@ func parent_name(panel :Panel) -> Array[InvSlot]:
 	match parent_name:
 		"Inventaire" : return inv.inv_slots
 		"Equipement" : return inv.equipment_slots
-		"Action_bar" : return inv.active_slots
+		"Active_bar" : return inv.active_slots
 	return []
 	
 func slot_interaction(slot :Panel) -> void:
 	if $GlobalInventory.is_open:
 		_drag_and_drop(slot)
 	else:
-		var panel_index :int = int(str(slot.name).get_slice("t", 1))
-		usable.emit(parent_name(slot)[panel_index -1])
+		var panel_index :int = slot.get_index(false)
+		usable.emit(parent_name(slot)[panel_index])
 	
 	
 func _drag_and_drop(panel_to :Panel) -> void:
-	var panel_index :int = int(str(panel_to.name).get_slice("t", 1))
+	var panel_index :int = panel_to.get_index(false)
 	
-	if panel_from == null && parent_name(panel_to)[panel_index-1].item == null:
+	if panel_from == null && parent_name(panel_to)[panel_index].item == null:
 		return
 
 	if panel_from == null:
 		panel_from = panel_to
-		slot_from_index = panel_index -1
+		slot_from_index = panel_index 
 		return
 		
-	var slot_to_index :int = panel_index -1
+	var slot_to_index :int = panel_index 
 	
 	var inv_from :Array[InvSlot] = parent_name(panel_from)
 	var inv_to :Array[InvSlot] = parent_name(panel_to)
 
-	
-	# Gère le moment ou on veut mettre un item dans un slot d'equipement
+
+	# Gère le moment ou on veut mettre ou enlever un item dans un slot d'equipement
+	if panel_from.get_parent().get_parent() == %Equipement:
+		if (inv_from[slot_from_index].item.item_data is ArmorData) :
+			var zero = ArmorData.new()
+			zero.setup(0, 0, 0)
+			update_player_stat.emit(zero)
+		
 	if panel_to.get_parent().get_parent() == %Equipement:
 		if !(inv_from[slot_from_index].item.item_data is ArmorData) :
 			panel_from = null
 			slot_from_index = -1
 			return
+		update_player_stat.emit(inv_from[slot_from_index].item.item_data)
+		
 	
-		update_player_stat.emit(inv_to[slot_to_index].item.stat)
-
+	if (panel_from == panel_to):
+		return
+	
+	
 	if (inv_from[slot_from_index].item == inv_to[slot_to_index].item):
 		inv_to[slot_to_index].amount += inv_from[slot_from_index].amount
 		inv_from[slot_from_index].amount = 0

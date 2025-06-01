@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://l8qhlw52wqqd"]
+[gd_scene load_steps=6 format=3 uid="uid://l8qhlw52wqqd"]
 
 [ext_resource type="Script" uid="uid://dctj0i0yoo2nb" path="res://Player/Inventory/Inv_ui.gd" id="1_bdfwv"]
 [ext_resource type="Script" uid="uid://c8kjtyv1t8n77" path="res://Player/Inventory/global_inventory.gd" id="2_jccat"]
 [ext_resource type="Texture2D" uid="uid://r17vaofxxqde" path="res://Sprite/Astronaute_right.png" id="3_00ghv"]
 [ext_resource type="PackedScene" uid="uid://f27c7wsqnou5" path="res://Player/Inventory/inv_ui_slot.tscn" id="3_h7x6q"]
+[ext_resource type="PackedScene" uid="uid://dj1giy3qvujh8" path="res://Player/Inventory/crafting_ui_slot.tscn" id="5_km4om"]
 
 [node name="Inv_ui" type="Control"]
 process_mode = 3
@@ -216,6 +217,12 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="Crafting_ui_slot" parent="GlobalInventory/CraftingPanel/Craft/Page1" instance=ExtResource("5_km4om")]
+layout_mode = 2
+
+[node name="Crafting_ui_slot2" parent="GlobalInventory/CraftingPanel/Craft/Page1" instance=ExtResource("5_km4om")]
+layout_mode = 2
+
 [node name="VBoxContainer" type="VBoxContainer" parent="GlobalInventory"]
 layout_mode = 1
 anchors_preset = 6
@@ -242,7 +249,7 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Craft"
 
-[node name="Action_bar" type="HBoxContainer" parent="."]
+[node name="Active_bar" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(196, 16)
 layout_mode = 1
@@ -259,32 +266,32 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="Action_bar"]
+[node name="GridContainer" type="GridContainer" parent="Active_bar"]
 layout_mode = 2
 columns = 100
 
-[node name="Inv_UI_slot1" parent="Action_bar/GridContainer" instance=ExtResource("3_h7x6q")]
+[node name="Inv_UI_slot1" parent="Active_bar/GridContainer" instance=ExtResource("3_h7x6q")]
 layout_mode = 2
 
-[node name="Inv_UI_slot2" parent="Action_bar/GridContainer" instance=ExtResource("3_h7x6q")]
+[node name="Inv_UI_slot2" parent="Active_bar/GridContainer" instance=ExtResource("3_h7x6q")]
 layout_mode = 2
 
-[node name="Inv_UI_slot3" parent="Action_bar/GridContainer" instance=ExtResource("3_h7x6q")]
+[node name="Inv_UI_slot3" parent="Active_bar/GridContainer" instance=ExtResource("3_h7x6q")]
 layout_mode = 2
 
-[node name="Inv_UI_slot4" parent="Action_bar/GridContainer" instance=ExtResource("3_h7x6q")]
+[node name="Inv_UI_slot4" parent="Active_bar/GridContainer" instance=ExtResource("3_h7x6q")]
 layout_mode = 2
 
-[node name="Inv_UI_slot5" parent="Action_bar/GridContainer" instance=ExtResource("3_h7x6q")]
+[node name="Inv_UI_slot5" parent="Active_bar/GridContainer" instance=ExtResource("3_h7x6q")]
 layout_mode = 2
 
-[node name="Inv_UI_slot6" parent="Action_bar/GridContainer" instance=ExtResource("3_h7x6q")]
+[node name="Inv_UI_slot6" parent="Active_bar/GridContainer" instance=ExtResource("3_h7x6q")]
 layout_mode = 2
 
-[node name="Inv_UI_slot7" parent="Action_bar/GridContainer" instance=ExtResource("3_h7x6q")]
+[node name="Inv_UI_slot7" parent="Active_bar/GridContainer" instance=ExtResource("3_h7x6q")]
 layout_mode = 2
 
-[node name="Inv_UI_slot8" parent="Action_bar/GridContainer" instance=ExtResource("3_h7x6q")]
+[node name="Inv_UI_slot8" parent="Active_bar/GridContainer" instance=ExtResource("3_h7x6q")]
 layout_mode = 2
 
 [connection signal="pressed" from="GlobalInventory/VBoxContainer/ObjectPanelButton" to="GlobalInventory" method="_on_object_panel_button_pressed"]
