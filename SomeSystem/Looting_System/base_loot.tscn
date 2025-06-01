@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ysff0qh40ejx"]
 
-[ext_resource type="Script" uid="uid://bwd6l3ynfqewb" path="res://loot/Base_loot.gd" id="1_fh2mv"]
+[ext_resource type="Script" uid="uid://bwd6l3ynfqewb" path="res://SomeSystem/Looting_System/Base_loot.gd" id="1_fh2mv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tdqu"]
 radius = 6.0
