@@ -96,7 +96,6 @@ func _on_attack_end() -> void:
 		can_attack = true
 		can_move = true
 
-
 func heal() -> void:
 	var item :HealData = usable.item_data
 	usable = null

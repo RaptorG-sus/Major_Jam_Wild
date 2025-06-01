@@ -1,0 +1,72 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfyjqewgjm8m7"]
+
+[ext_resource type="Script" uid="uid://dph05pfd5tdlw" path="res://debug/debug_zone.gd" id="1_n1yhp"]
+
+[sub_resource type="Gradient" id="Gradient_a44ki"]
+colors = PackedColorArray(1.23335e-07, 0, 0.170818, 1, 0.171583, 0.0682665, 0.220081, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ykyyk"]
+frequency = 0.0007
+fractal_lacunarity = 3.57
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1isof"]
+color_ramp = SubResource("Gradient_a44ki")
+noise = SubResource("FastNoiseLite_ykyyk")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_skmg6"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3i3xr"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(576, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 137.72
+initial_velocity_max = 137.72
+gravity = Vector3(0, 0, 0)
+
+[node name="DebugZone" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n1yhp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_1isof")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(576, -100)
+amount = 410
+texture = SubResource("CanvasTexture_skmg6")
+lifetime = 7.95
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_3i3xr")
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 10
+
+[node name="Menu" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "MENU"
+
+[node name="Planet_001" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Planet_001"
+
+[connection signal="pressed" from="GridContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="GridContainer/Planet_001" to="." method="_on_planet_001_pressed"]

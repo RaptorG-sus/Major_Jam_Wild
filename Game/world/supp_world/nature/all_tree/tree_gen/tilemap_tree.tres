@@ -1,6 +1,6 @@
 [gd_resource type="TileSet" load_steps=5 format=3 uid="uid://bfe77rqpi3bed"]
 
-[ext_resource type="PackedScene" uid="uid://2c4efy4dim1" path="res://world/supp_world/nature/all_tree/tree_gen/treeGen.tscn" id="1_6t0fc"]
+[ext_resource type="PackedScene" uid="uid://2c4efy4dim1" path="res://Game/world/supp_world/nature/all_tree/tree_gen/treeGen.tscn" id="1_6t0fc"]
 [ext_resource type="Texture2D" uid="uid://b7jhly4xjpsw0" path="res://Sprite/Spr_block/herbe_demo.png" id="2_03s58"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_k2fee"]

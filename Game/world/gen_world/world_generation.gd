@@ -5,11 +5,16 @@ extends Node2D
 @onready var seed_world :int = randi_range(1, 65536)
 @onready var seed_ore :int = randi_range(1,256)
 
-var tree_01 : PackedScene = preload("res://world/supp_world/nature/all_tree/tree_gen/all_tree/tree001.tscn")
-var tree_02 : PackedScene = preload("res://world/supp_world/nature/all_tree/tree_gen/all_tree/tree002.tscn")
-var tree_03 : PackedScene = preload("res://world/supp_world/nature/all_tree/tree_gen/all_tree/tree003.tscn")
-var tree_04 : PackedScene = preload("res://world/supp_world/nature/all_tree/tree_gen/all_tree/tree004.tscn")
+var tree_01 : PackedScene = PreloadData.tree_01
+var tree_02 : PackedScene = PreloadData.tree_02
+var tree_03 : PackedScene = PreloadData.tree_03
+var tree_04 : PackedScene = PreloadData.tree_04
+
 var all_tree = [tree_01,tree_02,tree_03,tree_04]
+
+@export var planet_name : String
+@export var tileset : TileSet
+@export var planetData : Dictionary = PlanetData.allPlanetData
 var earth_value : float = -0.25                                                                     # pour plus ou moins de grotte / rocher volant
 var ore_value : float = 0.3
 var tree_percentage : int = 5                                                                       # pourcentage d'arbre permettant changeant en fonction de la planete
@@ -17,12 +22,21 @@ var tree_percentage : int = 5                                                   
 var range_generation : int = 200
 
 func _ready() -> void:
-	terrain_generation()
-	tree_generation()
-	ore_generation()
-	back_ground()
+	total_generation()
 	
-	
+
+func total_generation():
+	noise = $Noise.texture.noise
+	map = $TileMap
+	seed_world = randi_range(1, 65536)
+	seed_ore = randi_range(1,256)
+	tileset = load(planetData["Planet001"]["TileSet"])
+	map.set_tileset(tileset)
+	call_deferred("terrain_generation")
+	call_deferred("tree_generation")
+	call_deferred("ore_generation")
+	call_deferred("back_ground")
+
 func terrain_generation() -> void:
 	noise.seed = seed_world                                                                         # genere la seed du monde
 	for x in range(range_generation):
@@ -78,8 +92,3 @@ func _input(event):
 		SaveLoad.saveFileData.player_position = $Player.global_position
 		SaveLoad.save_data()
 		
-
-
-func _load():
-	SaveLoad.load_data()
-	$Player.global_position = SaveLoad.saveFileData.player_position

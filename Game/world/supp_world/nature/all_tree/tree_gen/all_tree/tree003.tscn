@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bjk0xrnwj7kkc"]
 
-[ext_resource type="TileSet" uid="uid://bfe77rqpi3bed" path="res://world/supp_world/nature/all_tree/tree_gen/tilemap_tree.tres" id="1_cxvup"]
+[ext_resource type="TileSet" uid="uid://bfe77rqpi3bed" path="res://Game/world/supp_world/nature/all_tree/tree_gen/tilemap_tree.tres" id="1_cxvup"]
 
 [node name="tree003" type="Node2D"]
 

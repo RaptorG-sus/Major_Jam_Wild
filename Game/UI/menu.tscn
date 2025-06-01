@@ -1,0 +1,95 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6hiv8tm422os"]
+
+[ext_resource type="Script" uid="uid://c40rjamk0g7f5" path="res://Game/UI/menu.gd" id="1_ykyyk"]
+
+[sub_resource type="Gradient" id="Gradient_a44ki"]
+colors = PackedColorArray(1.23335e-07, 0, 0.170818, 1, 0.171583, 0.0682665, 0.220081, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ykyyk"]
+frequency = 0.0007
+fractal_lacunarity = 3.57
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m8tpa"]
+color_ramp = SubResource("Gradient_a44ki")
+noise = SubResource("FastNoiseLite_ykyyk")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_w110r"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_v5fet"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(576, 1, 1)
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 137.72
+initial_velocity_max = 137.72
+gravity = Vector3(0, 0, 0)
+
+[node name="Menu" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ykyyk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = SubResource("NoiseTexture2D_m8tpa")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(576, -100)
+amount = 410
+texture = SubResource("CanvasTexture_w110r")
+lifetime = 7.95
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_v5fet")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -552.0
+offset_right = -152.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 65
+text = "START"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 65
+text = "SETTINGS"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 65
+text = "QUIT"
+
+[node name="Debug" type="Button" parent="."]
+layout_mode = 0
+offset_right = 133.0
+offset_bottom = 89.0
+text = "Debug
+"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Debug" to="." method="_on_debug_pressed"]

@@ -22,6 +22,7 @@ DamageManager="*res://Global_Script/DamageManager.gd"
 PoolManager="*res://Global_Script/PoolManager.gd"
 DestructionManager="*res://Global_Script/DestructionManager.gd"
 SaveLoad="*res://Global_Script/saveLoad.gd"
+PlanetData="*res://Global_Script/PlanetData.gd"
 
 [debug]
 
@@ -35,14 +36,16 @@ window/size/always_on_top=true
 
 folder_colors={
 "res://Component/": "yellow",
+"res://Game/": "red",
+"res://Game/UI/": "pink",
+"res://Game/world/": "red",
 "res://Global_Script/": "yellow",
 "res://Player/": "blue",
 "res://Ressource/": "green",
 "res://SomeSystem/": "yellow",
 "res://SomeSystem/Crafting_System/Recipes/": "green",
 "res://Sprite/": "purple",
-"res://debug/": "gray",
-"res://world/": "red"
+"res://debug/": "gray"
 }
 
 [input]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bopmtpnbqnl3b"]
+
+[ext_resource type="Script" uid="uid://dqb7uf8h0vs7e" path="res://Game/world/gen_world/world_generation.gd" id="1_38ibh"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_41bai"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_li1ka"]
+noise = SubResource("FastNoiseLite_41bai")
+
+[node name="world_generation" type="Node2D"]
+script = ExtResource("1_38ibh")
+
+[node name="TileMap" type="TileMap" parent="."]
+z_index = 5
+scale = Vector2(2, 2)
+format = 2
+layer_1/name = "Layer1"
+layer_1/z_index = -1
+
+[node name="Noise" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("NoiseTexture2D_li1ka")

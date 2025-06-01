@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://2c4efy4dim1"]
 
-[ext_resource type="Script" uid="uid://bbg5sbx3wkt6j" path="res://world/supp_world/nature/all_tree/tree_gen/tree_gen.gd" id="1_hh7or"]
-[ext_resource type="Texture2D" uid="uid://ycnog4duo6dq" path="res://world/supp_world/nature/all_tree/tree_gen/tree_demo.png" id="2_anky4"]
+[ext_resource type="Script" uid="uid://bbg5sbx3wkt6j" path="res://Game/world/supp_world/nature/all_tree/tree_gen/tree_gen.gd" id="1_hh7or"]
+[ext_resource type="Texture2D" uid="uid://ycnog4duo6dq" path="res://Game/world/supp_world/nature/all_tree/tree_gen/tree_demo.png" id="2_anky4"]
 [ext_resource type="PackedScene" uid="uid://b8gka0iivukyi" path="res://Component/hitbox_component.tscn" id="4_706jo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ena2r"]
