@@ -6,15 +6,18 @@ extends Node2D
 @onready var seed_ore :int = randi_range(1,256)
 
 var tree_01 : PackedScene = preload("res://world/supp_world/nature/all_tree/tree_gen/all_tree/tree001.tscn")
+var tree_02 : PackedScene = preload("res://world/supp_world/nature/all_tree/tree_gen/all_tree/tree002.tscn")
+var tree_03 : PackedScene = preload("res://world/supp_world/nature/all_tree/tree_gen/all_tree/tree003.tscn")
+var tree_04 : PackedScene = preload("res://world/supp_world/nature/all_tree/tree_gen/all_tree/tree004.tscn")
+var all_tree = [tree_01,tree_02,tree_03,tree_04]
 var earth_value : float = -0.25                                                                     # pour plus ou moins de grotte / rocher volant
 var ore_value : float = 0.3
 var tree_percentage : int = 5                                                                       # pourcentage d'arbre permettant changeant en fonction de la planete
-var block :Vector2 = Vector2i(3,2)                                                                           # temporaire ou pas, block utilisé pour faire l'herbe
-																									# block à utiliser pour les arbres etc...
 
 var range_generation : int = 200
 
 func _ready() -> void:
+	_load()
 	terrain_generation()
 	tree_generation()
 	ore_generation()
@@ -37,7 +40,8 @@ func tree_generation() -> void:
 				var y :int = 0
 				while map.get_cell_source_id(0,Vector2i(x,y)) != 0:                          # pour poser le block au plus bas possible jusqu'a la hauteur voulue (suite du while)
 					y+=1
-				var tree : Node2D = tree_01.instantiate()
+				var temp : int = randi_range(0,len(all_tree)-1)
+				var tree : Node2D = all_tree[temp].instantiate()
 				self.add_child(tree)
 				tree.position = Vector2i(x*32,(y-10)*32)
 				for i in range(10):
@@ -64,3 +68,15 @@ func back_ground() -> void:
 				y += 1
 		for i in range(y,500):
 			map.set_cell(1,Vector2i(x,i),3,Vector2i.ZERO)
+
+func _input(event):
+	if event.is_action_pressed("save"):
+		print("save ?")
+		SaveLoad.saveFileData.player_position = $Player.global_position
+		SaveLoad.save_data()
+		
+
+
+func _load():
+	SaveLoad.load_data()
+	$Player.global_position = SaveLoad.saveFileData.player_position

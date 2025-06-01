@@ -15,25 +15,29 @@ func _ready() -> void:
 		coord.x -= 8 
 	if coord.y < 0:
 		coord.y -= 8
-	coord.x = int(coord.x/32)
-	coord.y = int(coord.y/32)
+	coord.x = int(coord.x/16)
+	coord.y = int(coord.y/16)
 
 		
 func _on_area_2d_input_event(viewport:Node, event:InputEvent, shape_idx:int) -> void:
 	if event.is_action_pressed("Interaction"):
+		print(coord)
 		break_tree()
 		#print(map.get_cell_source_id(0,Vector2i(coord.x,coord.y+1)))
 
 
 func break_tree() -> void:
 	#drop item et particles
-	while map.get_cell_source_id(0,coord) == 2:                
+	while map.get_cell_source_id(0,coord) == 0 or map.get_cell_source_id(0,coord) == 1:
 		map.erase_cell(0,coord)
-		queue_free()
+		for i in range(10):
+			map.erase_cell(0,Vector2i((i+1),coord.y))
+			map.erase_cell(0,Vector2i(-(i+1),coord.y))
 		coord.y -= 1
 
 
 func _on_hitbox_component_input_event(viewport:Node, event:InputEvent, shape_idx:int) -> void:
+	print(coord)
 	var attack :AttackData = AttackData.new()
 	attack.setup(1, 0, 0)
 	attack.attack_position = global_position
