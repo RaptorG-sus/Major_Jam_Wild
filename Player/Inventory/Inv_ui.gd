@@ -1,7 +1,7 @@
 extends Control
 
 
-@onready var inv :Inv = preload("res://Ressource/Player_inventory.tres")
+@onready var inv :Inv = PreloadData.inventory_preload
 @onready var inv_slots :Array = $Inventaire/GridContainer.get_children()
 @onready var equipment_slots :Array = $Equipement/GridContainer.get_children()
 @onready var active_slots :Array = $Action_bar/GridContainer.get_children()

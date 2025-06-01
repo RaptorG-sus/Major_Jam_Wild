@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b3yxgbv2s7qf3"]
+[gd_scene load_steps=10 format=3 uid="uid://b3yxgbv2s7qf3"]
 
 [ext_resource type="Script" uid="uid://bf0kcnem8vrb" path="res://Player/Player.gd" id="1_tok1r"]
 [ext_resource type="Resource" uid="uid://wftd8cqvx4gi" path="res://Ressource/Player_inventory.tres" id="2_6ysni"]
 [ext_resource type="Texture2D" uid="uid://r17vaofxxqde" path="res://Sprite/Astronaute_right.png" id="2_8g4oa"]
 [ext_resource type="PackedScene" uid="uid://b8gka0iivukyi" path="res://Component/hitbox_component.tscn" id="2_inwu4"]
 [ext_resource type="PackedScene" uid="uid://l8qhlw52wqqd" path="res://Player/Inventory/inv_ui.tscn" id="4_ddoul"]
+[ext_resource type="Script" uid="uid://dqx02bwt4dke" path="res://Component/HitboxComponent.gd" id="5_6ysni"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6ysni"]
 animations = [{
@@ -39,7 +40,7 @@ position = Vector2(-3, 0)
 shape = SubResource("CapsuleShape2D_8g4oa")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("2_inwu4")]
-Max_health = 10
+script = ExtResource("5_6ysni")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(-3, 0)

@@ -14,7 +14,6 @@ script = ExtResource("1_hh7or")
 texture = ExtResource("2_anky4")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("4_706jo")]
-Max_health = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_ena2r")

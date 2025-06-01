@@ -15,9 +15,16 @@ run/main_scene="uid://bopmtpnbqnl3b"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+PreloadData="*res://Global_Script/PreloadData.gd"
+DamageManager="*res://Global_Script/DamageManager.gd"
+PoolManager="*res://Global_Script/PoolManager.gd"
+DestructionManager="*res://Global_Script/DestructionManager.gd"
+
 [debug]
 
-gdscript/warnings/untyped_declaration=2
+gdscript/warnings/untyped_declaration=1
 
 [input]
 
