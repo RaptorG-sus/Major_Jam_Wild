@@ -15,21 +15,25 @@ var block :Vector2 = Vector2i(3,2)                                              
 var range_generation : int = 200
 
 func _ready() -> void:
-	terrain_generation()
-	tree_generation()
-	ore_generation()
-	back_ground()
+	call_deferred("terrain_generation")
+	call_deferred("tree_generation")
+	call_deferred("ore_generation")
+	call_deferred("back_ground")
 	
 	
 func terrain_generation() -> void:
 	noise.seed = seed_world                                                                         # genere la seed du monde
 	for x in range(range_generation):
-		var ground :int = abs(noise.get_noise_2d(x,0)*10)                                                # genere les petites buttes de terre permettant un monde plus agréable ( * 10 pour des buttes plus abruptes)
-		for y in range(ground,500):
-			if noise.get_noise_2d(x,y) > earth_value:                                               # genere en fonction du noise et aura plus ou moins de terre dependant de earthvalue
-				map.set_cell(0,Vector2i(x,y),0,Vector2i(0,0),1)                                               # pose les blocks
+		var ground :int = abs(noise.get_noise_2d(x,0)*10)  
+		for y in range(ground, 500):   # genere les petites buttes de terre permettant un monde plus agréable ( * 10 pour des buttes plus abruptes)
+			if noise.get_noise_2d(x,y) > earth_value:			   # genere en fonction du noise et aura plus ou moins de terre dependant de earthvalue
+				map.set_cell(0, Vector2i(x,y), 0, Vector2i(0,0), 1)     # pose les blocks
+	
+		
 
-
+	
+	
+	  
 func tree_generation() -> void:
 	if tree_percentage > 0:                                                                         # verification initial pour éviter des faires des boucles infini si aucun arbre voulue
 		for x in range(range_generation):
