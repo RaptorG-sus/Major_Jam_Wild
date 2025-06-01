@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ArmorData" load_steps=2 format=3 uid="uid://cpmhy2solfg48"]
+
+[ext_resource type="Script" uid="uid://cubeyywmrjr1v" path="res://SomeSystem/Item_System/Armor_Data.gd" id="1_jsoyf"]
+
+[resource]
+script = ExtResource("1_jsoyf")
+hp = 1
+armor = 5
+speed = 0.0
+metadata/_custom_type_script = "uid://cubeyywmrjr1v"

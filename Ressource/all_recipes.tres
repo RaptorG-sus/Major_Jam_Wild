@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ArrayCraftingRecipes" load_steps=5 format=3 uid="uid://tfgiygaayl17"]
+
+[ext_resource type="Script" uid="uid://cnyi672y5r1jb" path="res://SomeSystem/Crafting_System/CraftingRecepie.gd" id="1_g1ywn"]
+[ext_resource type="Resource" uid="uid://bkqfiiwhu702e" path="res://Ressource/res_recipes/charcoal_recepie.tres" id="2_ktttl"]
+[ext_resource type="Script" uid="uid://copmln6hypxjm" path="res://SomeSystem/Crafting_System/ArrayCraftingRecipes.gd" id="3_7mbvj"]
+[ext_resource type="Resource" uid="uid://dcwbuys0li2ul" path="res://Ressource/res_recipes/test_armure_recipe.tres" id="3_g80sa"]
+
+[resource]
+script = ExtResource("3_7mbvj")
+array_crafting_recipes = Array[ExtResource("1_g1ywn")]([ExtResource("2_ktttl"), ExtResource("3_g80sa")])
+metadata/_custom_type_script = "uid://copmln6hypxjm"

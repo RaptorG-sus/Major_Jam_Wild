@@ -2,9 +2,9 @@ extends CharacterBody2D
 
 @export var inv :Inv 
 
-@onready var player_stat :ArmorData = ArmorData.new()
+@onready var base_player_stat :ArmorData = ArmorData.new()
 # Les stats du player
-
+@onready var player_stat :ArmorData = ArmorData.new()
 # Les scenes des outils de farm + arme de mélée
 var axe :PackedScene = null
 var pickaxe :PackedScene = preload("res://Player/Interaction/pickaxe.tscn")
@@ -28,6 +28,7 @@ func _ready() -> void:
 	if !($Inv_ui.usable.is_connected(full_usable)):
 		$Inv_ui.usable.connect(full_usable)
 
+	base_player_stat.setup(10, 0, 1000)
 	player_stat.setup(10, 0, 1000)
 
 	$HitboxComponent.Max_health = player_stat.hp
@@ -38,6 +39,7 @@ func _physics_process(delta: float) -> void:
 	#velocity = delta * Vector2(direction, 1) * player_stat.speed * taille_sprite
 	velocity = delta * direction2 * player_stat.speed * taille_sprite
 	move_and_slide()
+
 
 
 func _input(event: InputEvent) -> void:
@@ -61,9 +63,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Interaction") && usable != null:
 		can_move = false
 		if usable.item_data is AttackData:
-			attack()
+			_attack()
 		elif usable.item_data is HealData:
-			heal()
+			_heal()
 		else :
 			can_move = true
 			# usable.item_data is ItemData or ArmorData
@@ -71,7 +73,7 @@ func _input(event: InputEvent) -> void:
 		
 		
 # Génère la scene associer à l'outil pour mettre des dégats aux features
-func attack() -> void:
+func _attack() -> void:
 	if can_attack:
 		can_attack = false
 		var player_attack :Node2D
@@ -97,16 +99,16 @@ func _on_attack_end() -> void:
 		can_move = true
 
 
-func heal() -> void:
+func _heal() -> void:
 	var item :HealData = usable.item_data
 	usable = null
 	$HitboxComponent.heal(item)
 
 
 func stat_update(stat :ArmorData) ->void:
-	player_stat.hp = stat.hp
-	player_stat.armor = stat.armor
-	player_stat.speed = stat.speed
+	player_stat.hp = base_player_stat.hp + stat.hp
+	player_stat.armor = base_player_stat.armor + stat.armor
+	player_stat.speed = base_player_stat.speed + stat.speed
 
 
 func full_usable(slot :InvSlot) -> void:

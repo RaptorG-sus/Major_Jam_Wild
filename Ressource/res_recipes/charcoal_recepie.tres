@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=7 format=3 uid="uid://bkqfiiwhu702e"]
+
+[ext_resource type="Script" uid="uid://dx1nggitpe4so" path="res://SomeSystem/Inventory_Ststem/Inventory_slot.gd" id="1_wq18v"]
+[ext_resource type="Resource" uid="uid://cbatfcb2g8mbq" path="res://Ressource/res_loot/ore_break_gen.tres" id="2_vl3dl"]
+[ext_resource type="Script" uid="uid://cnyi672y5r1jb" path="res://SomeSystem/Crafting_System/CraftingRecepie.gd" id="3_xyx4c"]
+[ext_resource type="Resource" uid="uid://3yx8m7nk1wsw" path="res://Ressource/res_item/ore/charcoal.tres" id="4_wq18v"]
+
+[sub_resource type="Resource" id="Resource_v4qo7"]
+script = ExtResource("1_wq18v")
+item = ExtResource("2_vl3dl")
+amount = 3
+metadata/_custom_type_script = "uid://dx1nggitpe4so"
+
+[sub_resource type="Resource" id="Resource_x087t"]
+script = ExtResource("1_wq18v")
+item = ExtResource("4_wq18v")
+amount = 1
+metadata/_custom_type_script = "uid://dx1nggitpe4so"
+
+[resource]
+script = ExtResource("3_xyx4c")
+slot = SubResource("Resource_x087t")
+requirement = Array[ExtResource("1_wq18v")]([SubResource("Resource_v4qo7")])
+metadata/_custom_type_script = "uid://cnyi672y5r1jb"
