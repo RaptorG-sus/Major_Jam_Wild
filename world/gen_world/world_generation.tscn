@@ -38,6 +38,7 @@ script = ExtResource("1_38ibh")
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = 5
+scale = Vector2(2, 2)
 tile_set = SubResource("TileSet_nrbq6")
 format = 2
 layer_1/name = "Layer1"
