@@ -17,8 +17,9 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ysni"]
-size = Vector2(34, 128)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8g4oa"]
+radius = 17.0
+height = 128.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s1rgi"]
 radius = 17.0
@@ -35,7 +36,7 @@ sprite_frames = SubResource("SpriteFrames_6ysni")
 
 [node name="Hitbox" type="CollisionShape2D" parent="."]
 position = Vector2(-3, 0)
-shape = SubResource("RectangleShape2D_6ysni")
+shape = SubResource("CapsuleShape2D_8g4oa")
 
 [node name="HitboxComponent" parent="." instance=ExtResource("2_inwu4")]
 Max_health = 10

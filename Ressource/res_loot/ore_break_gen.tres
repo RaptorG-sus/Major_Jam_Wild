@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://brsevjhy453jg" path="res://Player/Inventory/Inventory_item.gd" id="1_71w6x"]
 [ext_resource type="Script" uid="uid://cb1psy733fmrv" path="res://Component/Item_Data.gd" id="1_saqj1"]
-[ext_resource type="Texture2D" uid="uid://ciwmkss3qobxp" path="res://Sprite/Spr_loot/ore_break_gen.png" id="2_m5wiq"]
+[ext_resource type="Texture2D" uid="uid://ciwmkss3qobxp" path="res://Sprite/ore_break_gen.png" id="2_m5wiq"]
 
 [sub_resource type="Resource" id="Resource_saqj1"]
 script = ExtResource("1_saqj1")

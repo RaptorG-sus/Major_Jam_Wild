@@ -11,7 +11,6 @@ script = ExtResource("1_fh2mv")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_0tdqu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -5,6 +5,7 @@ var roughness : int = 1
 var coord : Vector2i
 @onready var map :Node2D = $".."
 
+
 func _ready() -> void:
 	coord.x = position.x
 	coord.y = position.y

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ciwmkss3qobxp"
-path="res://.godot/imported/ore_break_gen.png-67bca71d14885ce756b4fe29bc07842d.ctex"
+path="res://.godot/imported/ore_break_gen.png-4aa90fd440e917340ddfe62f889cd36c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprite/Spr_loot/ore_break_gen.png"
-dest_files=["res://.godot/imported/ore_break_gen.png-67bca71d14885ce756b4fe29bc07842d.ctex"]
+source_file="res://Sprite/ore_break_gen.png"
+dest_files=["res://.godot/imported/ore_break_gen.png-4aa90fd440e917340ddfe62f889cd36c.ctex"]
 
 [params]
 

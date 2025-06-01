@@ -14,7 +14,7 @@ signal update_player_stat(player_stat :ArmorData)
 signal usable(slot :InvSlot)
 
 func _ready() -> void:
-	inv.update.connect(update_slots)
+	inv.update.connect(update_array_slots)
 	for s :Panel in inv_slots:
 		s.pressed.connect(slot_interaction)
 	for s :Panel in equipment_slots:
@@ -22,7 +22,10 @@ func _ready() -> void:
 	for s :Panel in active_slots:
 		s.pressed.connect(slot_interaction)
 		
-	update_slots()
+	update_array_slots()
+	update_array_slots(inv.equipment_slots, equipment_slots)
+	update_array_slots(inv.active_slots, active_slots)
+
 	close()
 	
 func _input(event: InputEvent) -> void:
@@ -32,14 +35,11 @@ func _input(event: InputEvent) -> void:
 		else:
 			open()
 	
-	
-func update_slots() -> void:
-	for i in range(min(inv.inv_slots.size(), inv_slots.size())):
-		inv_slots[i].update(inv.inv_slots[i])
-	for i in range(min(inv.equipment_slots.size(), equipment_slots.size())):
-		equipment_slots[i].update(inv.equipment_slots[i])
-	for i in range(min(inv.active_slots.size(), active_slots.size())):
-		active_slots[i].update(inv.active_slots[i])
+
+# J'ai mis ces valeur de base pour le insert de inv, qui lui fonctionne que dans le inv_slots
+func update_array_slots(inv_array :Array[InvSlot] = inv.inv_slots, node_array :Array[Node] = inv_slots) -> void:
+	for i in range(min(inv_array.size(), node_array.size())):
+		node_array[i].update(inv_array[i])
 
 
 func open() -> void:
@@ -64,12 +64,12 @@ func parent_name(panel :Panel) -> Array[InvSlot]:
 		"Action_bar" : return inv.active_slots
 	return []
 	
-func slot_interaction(slot_to :Panel) -> void:
+func slot_interaction(slot :Panel) -> void:
 	if is_open:
-		drag_and_drop(slot_to)
+		drag_and_drop(slot)
 	else:
-		var panel_index :int = int(str(slot_to.name).get_slice("t", 1))
-		usable.emit(parent_name(slot_to)[panel_index -1])
+		var panel_index :int = int(str(slot.name).get_slice("t", 1))
+		usable.emit(parent_name(slot)[panel_index -1])
 	
 	
 func drag_and_drop(slot_to :Panel) -> void:
@@ -100,8 +100,10 @@ func drag_and_drop(slot_to :Panel) -> void:
 	var temp_slot :InvSlot = inv_from[slot_from_index]
 	inv_from[slot_from_index] = inv_to[slot_to_index]
 	inv_to[slot_to_index] = temp_slot
-	
+
 	slot_from = null
 	slot_from_index = -1
-
-	update_slots()
+	
+	update_array_slots()
+	update_array_slots(inv.equipment_slots, equipment_slots)
+	update_array_slots(inv.active_slots, active_slots)
