@@ -22,7 +22,7 @@ var tree_percentage : int = 5                                                   
 var range_generation : int = 200
 
 func _ready() -> void:
-	total_generation()
+	pass
 	
 
 func total_generation():
@@ -86,9 +86,9 @@ func back_ground() -> void:
 		for i in range(y,500):
 			map.set_cell(1,Vector2i(x,i),3,Vector2i.ZERO)
 
-func _input(event):
+"""func _input(event):
 	if event.is_action_pressed("save"):
 		print("save ?")
 		SaveLoad.saveFileData.player_position = $Player.global_position
-		SaveLoad.save_data()
+		SaveLoad.save_data()"""
 		
