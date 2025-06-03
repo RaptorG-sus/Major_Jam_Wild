@@ -59,7 +59,8 @@ func tree_generation() -> void:
 					y+=1
 				var temp : int = randi_range(0,len(all_tree)-1)
 				var tree : Node2D = all_tree[temp].instantiate()
-				self.add_child(tree)
+				tree.path = all_tree[temp]
+				$tree_gen.add_child(tree)
 				tree.position = Vector2i(x*32,(y-10)*32)
 				for i in range(10):
 					tree.get_node("TileMap").set_cell(0,Vector2i(0,i),0,Vector2i(0,0),1)                            # à remplacer par "load_scene_arbre(coord x, y patati patata)

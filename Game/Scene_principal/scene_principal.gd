@@ -22,15 +22,34 @@ func _input(event: InputEvent) -> void:
 func _save_planet():
 	planet_name = PlanetData.planet_name
 	var tileMapPlanet = planet_instance.get_node("world_generation").get_node("TileMap")
+	var treePlanet = planet_instance.get_node("world_generation").get_node("tree_gen")
+	SaveLoad.saveFileData.actual_planet = {"Tile" : [],
+	"Tree" : []}
 	for cell in tileMapPlanet.get_used_cells(0):
-		SaveLoad.saveFileData.actual_planet.append({
+		SaveLoad.saveFileData.actual_planet["Tile"].append({
 			"position": cell,
 			"source_id": tileMapPlanet.get_cell_source_id(0,cell),
 		})
+	for cell in tileMapPlanet.get_used_cells(1):
+		SaveLoad.saveFileData.actual_planet["Tile"].append({
+			"position": cell,
+			"source_id": tileMapPlanet.get_cell_source_id(1,cell),
+		})
+	for tree in treePlanet.get_children():
+		print(tree)
+		var tileTree = []
+		print(tree.get_child(0))
+		for cell in tree.get_child(0).get_used_cells(0):
+			print(cell)
+			tileTree.append({
+				"position" : cell,
+				"source_id" : tree.get_child(0).get_cell_source_id(0,cell)
+			})
+		SaveLoad.saveFileData.actual_planet["Tree"].append({
+			"position" : tree.global_position,
+			"tile" : tileTree
+		})
+	
 	match planet_name:
 		"Planet001":
-			for cell in tileMapPlanet.get_used_cells(0):
-				SaveLoad.saveFileData.planet001_create.append({
-					"position": cell,
-					"source_id": tileMapPlanet.get_cell_source_id(0,cell)
-				})
+			SaveLoad.saveFileData.planet001_create = SaveLoad.saveFileData.actual_planet

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://djsfy5r2qjd5v"]
+
+[ext_resource type="Texture2D" uid="uid://b7jhly4xjpsw0" path="res://Sprite/Spr_block/herbe_demo.png" id="1_k3823"]
+
+[node name="Leave" type="Sprite2D"]
+texture = ExtResource("1_k3823")

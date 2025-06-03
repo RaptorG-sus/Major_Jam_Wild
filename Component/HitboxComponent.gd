@@ -43,6 +43,7 @@ func _apply_destruction():
 		parent.break_tree()
 	elif parent is Ore:
 		_loot_spawn(parent)
+		parent.get_parent().erase_cell(0,Vector2i(int(parent.position.x/16),int(parent.position.y/16)))
 	else:
 		parent.queue_free()
 		
