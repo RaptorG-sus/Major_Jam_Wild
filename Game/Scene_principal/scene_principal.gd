@@ -4,12 +4,14 @@ extends Node2D
 var planet_instance
 var planet_name
 
+
 func _ready() -> void:
 	SaveLoad.load_data()
 	var planet = PlanetData.allPlanetData[PlanetData.planet_name]["Scene"]
 	planet_instance = planet.instantiate()
 	planet_instance.buildPlanet()
 	add_child(planet_instance)
+
 
 
 func _input(event: InputEvent) -> void:

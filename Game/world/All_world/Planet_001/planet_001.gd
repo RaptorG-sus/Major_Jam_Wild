@@ -1,6 +1,12 @@
 extends Node2D
 
 var planet_load
+var seed_planet : int
+var seed_ore : int
+
+func _ready():
+	seed_planet = randi_range(1,65536)
+	seed_ore = randi_range(1, 256)
 
 func buildPlanet():
 	if SaveLoad.saveFileData.planet001_status and !PlanetData.debug_planet:
@@ -20,12 +26,19 @@ func buildPlanet():
 			tree_instance.position = tree["position"]
 			tilemap_instance.scale = Vector2i(2,2)
 			for cell in tree["tile"]:
-				print(cell)
 				tilemap_instance.set_cell(0,cell["position"], cell["source_id"], Vector2i(0,0), 1)
 			$world_generation/tree_gen.add_child(tree_instance)
 			tree_instance.add_child(tilemap_instance)
 	else:
-		print("test")
-		$world_generation.planet_name = "Planet001"
-		$world_generation.total_generation()
-	
+		for i in range(3):
+			var chunk_instance = PreloadData.chunk.instantiate()
+			var chunk_world = chunk_instance.get_node("world_generation")
+			chunk_instance.global_position.x = 32*(-24+16*i)
+			chunk_world.planet_name = "Planet_001"
+			chunk_world.x_large = -24 + 16*i
+			chunk_world.seed_world = seed_planet
+			chunk_world.seed_ore = seed_ore
+			chunk_world.get_node("TileMap").set_tileset(load(PlanetData.allPlanetData["Planet001"]["TileSet"])) 
+			chunk_world.total_generation()
+			add_child(chunk_instance)
+			

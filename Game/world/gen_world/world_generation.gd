@@ -2,8 +2,9 @@ extends Node2D
 
 @onready var noise :FastNoiseLite = $Noise.texture.noise
 @onready var map :TileMap = $TileMap
-@onready var seed_world :int = randi_range(1, 65536)
-@onready var seed_ore :int = randi_range(1,256)
+@onready var seed_world :int
+@onready var seed_ore :int
+var x_large : int
 
 var tree_01 : PackedScene = PreloadData.tree_01
 var tree_02 : PackedScene = PreloadData.tree_02
@@ -19,7 +20,7 @@ var earth_value : float = -0.25                                                 
 var ore_value : float = 0.3
 var tree_percentage : int = 5                                                                       # pourcentage d'arbre permettant changeant en fonction de la planete
 
-var range_generation : int = 200
+var range_generation : int = 16
 
 func _ready() -> void:
 	pass
@@ -32,19 +33,19 @@ func total_generation():
 	seed_ore = randi_range(1,256)
 	tileset = load(planetData["Planet001"]["TileSet"])
 	map.set_tileset(tileset)
-	call_deferred("terrain_generation")
-	call_deferred("tree_generation")
-	call_deferred("ore_generation")
-	call_deferred("back_ground")
+	terrain_generation()
+	tree_generation()
+	ore_generation()
+	back_ground()
+	
 
 func terrain_generation() -> void:
 	noise.seed = seed_world                                                                         # genere la seed du monde
 	for x in range(range_generation):
-		var ground :int = abs(noise.get_noise_2d(x,0)*10)  
+		var ground :int = abs(noise.get_noise_2d(x_large + x,0)*10)  
 		for y in range(ground, 500):   # genere les petites buttes de terre permettant un monde plus agréable ( * 10 pour des buttes plus abruptes)
-			if noise.get_noise_2d(x,y) > earth_value:			   # genere en fonction du noise et aura plus ou moins de terre dependant de earthvalue
-				map.set_cell(0, Vector2i(x,y), 0, Vector2i(0,0), 1)     # pose les blocks
-	
+			if noise.get_noise_2d(x_large + x,y) > earth_value:			   # genere en fonction du noise et aura plus ou moins de terre dependant de earthvalue
+				map.set_cell(0, Vector2i(x,y), 0, Vector2i.ZERO, 1)     # pose les blocks
 		
 
 	
@@ -65,6 +66,7 @@ func tree_generation() -> void:
 				for i in range(10):
 					tree.get_node("TileMap").set_cell(0,Vector2i(0,i),0,Vector2i(0,0),1)                            # à remplacer par "load_scene_arbre(coord x, y patati patata)
 
+
 func ore_generation() -> void:
 	noise.seed = seed_ore                                                                           # genere prend une nouvelle seed pour les minerais
 	for x in range(range_generation):                   
@@ -73,6 +75,8 @@ func ore_generation() -> void:
 			if noise.get_noise_2d(x,y) > ore_value and map.get_cell_source_id(0,Vector2i(x,y)) == 0:                 # placement des minerais
 				map.erase_cell(0,Vector2i(x,y))
 				map.set_cell(0,Vector2i(x,y),1,Vector2i.ZERO,1)
+
+
 
 func back_ground() -> void:
 	noise.seed = seed_world
@@ -87,9 +91,12 @@ func back_ground() -> void:
 		for i in range(y,500):
 			map.set_cell(1,Vector2i(x,i),3,Vector2i.ZERO)
 
-"""func _input(event):
-	if event.is_action_pressed("save"):
-		print("save ?")
-		SaveLoad.saveFileData.player_position = $Player.global_position
-		SaveLoad.save_data()"""
-		
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	map.set_process(false)
+	map.visible = false
+
+func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	map.set_process(true)
+	map.visible = true

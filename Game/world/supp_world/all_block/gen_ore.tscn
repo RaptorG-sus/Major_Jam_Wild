@@ -14,5 +14,5 @@ metadata/_custom_type_script = "uid://dx1nggitpe4so"
 [node name="Gen_ore" instance=ExtResource("1_l0up0")]
 all_loot = Array[ExtResource("2_25fjo")]([SubResource("Resource_v0135")])
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("1_ksll6")
