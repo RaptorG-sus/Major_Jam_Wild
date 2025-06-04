@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://87iswcs4qb6i"]
 
-[ext_resource type="PackedScene" uid="uid://60jwa58ougx0" path="res://Game/world/supp_world/all_block/base_ore.tscn" id="1_33hm7"]
-[ext_resource type="Texture2D" uid="uid://b7jhly4xjpsw0" path="res://Sprite/Spr_block/herbe_demo.png" id="2_56u83"]
+[ext_resource type="PackedScene" uid="uid://60jwa58ougx0" path="res://Game/world/supp_world/all_block/base_ore.tscn" id="1_31yh7"]
+[ext_resource type="Texture2D" uid="uid://b7jhly4xjpsw0" path="res://Sprite/Spr_block/herbe_demo.png" id="2_s0ovp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nrhd0"]
 size = Vector2(16, 16)
@@ -9,7 +9,7 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1uulu"]
 size = Vector2(16, 16)
 
-[node name="Grass" instance=ExtResource("1_33hm7")]
+[node name="Grass" instance=ExtResource("1_31yh7")]
 collision_mask = 1
 Max_health = 1
 
@@ -17,7 +17,7 @@ Max_health = 1
 shape = SubResource("RectangleShape2D_nrhd0")
 
 [node name="Sprite2D" parent="." index="1"]
-texture = ExtResource("2_56u83")
+texture = ExtResource("2_s0ovp")
 
 [node name="CollisionShape2D" parent="HitboxComponent" index="0"]
 shape = SubResource("RectangleShape2D_1uulu")

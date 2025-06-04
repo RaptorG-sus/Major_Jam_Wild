@@ -62,3 +62,5 @@ func _save_planet() -> void:
 	match planet_name:
 		"Planet001":
 			SaveLoad.saveFileData.planet001_create = SaveLoad.saveFileData.actual_planet
+		"Planet002":
+			SaveLoad.saveFileData.planet002_create = SaveLoad.saveFileData.actual_planet

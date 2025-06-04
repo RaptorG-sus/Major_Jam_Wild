@@ -68,5 +68,10 @@ text = "MENU"
 layout_mode = 2
 text = "Planet_001"
 
+[node name="Planet_002" type="Button" parent="GridContainer"]
+layout_mode = 2
+text = "Planet_002"
+
 [connection signal="pressed" from="GridContainer/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="GridContainer/Planet_001" to="." method="_on_planet_001_pressed"]
+[connection signal="pressed" from="GridContainer/Planet_002" to="." method="_on_planet_002_pressed"]

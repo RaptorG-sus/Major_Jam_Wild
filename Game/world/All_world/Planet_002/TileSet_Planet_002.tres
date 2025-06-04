@@ -1,0 +1,20 @@
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://c771fcbdd25pp"]
+
+[ext_resource type="PackedScene" uid="uid://bmmpv87wfpdn4" path="res://Game/world/supp_world/all_block/Planet_002/rock_planet002.tscn" id="1_e8jip"]
+[ext_resource type="PackedScene" uid="uid://mgwaoaiejxl8" path="res://Game/world/supp_world/all_block/Planet_002/ore_planet_002.tscn" id="2_s5ji6"]
+[ext_resource type="Texture2D" uid="uid://drwt0e55lpb7j" path="res://Sprite/Spr_block/back_ground_002.png" id="3_s3qbr"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_g5gtb"]
+scenes/1/scene = ExtResource("1_e8jip")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_i24fo"]
+scenes/1/scene = ExtResource("2_s5ji6")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3yy53"]
+texture = ExtResource("3_s3qbr")
+0:0/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetScenesCollectionSource_g5gtb")
+sources/1 = SubResource("TileSetScenesCollectionSource_i24fo")
+sources/3 = SubResource("TileSetAtlasSource_3yy53")
