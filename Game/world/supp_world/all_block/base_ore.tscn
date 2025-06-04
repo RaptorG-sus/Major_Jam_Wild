@@ -10,7 +10,6 @@ size = Vector2(16, 16)
 size = Vector2(15, 15)
 
 [node name="Base_ore" type="StaticBody2D"]
-disable_mode = 1
 collision_layer = 32
 collision_mask = 0
 script = ExtResource("1_bkgow")
@@ -27,4 +26,8 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("RectangleShape2D_25fjo")
 
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -8,3 +8,4 @@ class_name Ore
 func _ready() -> void:
 	$HitboxComponent.set_script(PreloadData.hitboxcomponent_preload)
 	$HitboxComponent.Max_health = Max_health
+

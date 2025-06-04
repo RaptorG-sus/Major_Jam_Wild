@@ -5,6 +5,7 @@ var seed_planet : int
 var seed_ore : int
 
 func _ready() -> void:
+	print(get_tree())
 	seed_planet = randi_range(1,65536)
 	seed_ore = randi_range(1, 256)
 
@@ -30,15 +31,17 @@ func buildPlanet() -> void:
 			$world_generation/tree_gen.add_child(tree_instance)
 			tree_instance.add_child(tilemap_instance)
 	else:
-		for i in range(3):
+		for i in range(2000):
+			await get_tree().create_timer(0.1).timeout
 			var chunk_instance :Node2D = PreloadData.chunk.instantiate()
 			var chunk_world :Node2D = chunk_instance.get_node("world_generation")
-			chunk_instance.global_position.x = 32*(-24+16*i)
+			chunk_instance.global_position.x = 32*(-40+4*i)
 			chunk_world.planet_name = "Planet_001"
-			chunk_world.x_large = -24 + 16*i
+			chunk_world.x_large = 4*i
 			chunk_world.seed_world = seed_planet
 			chunk_world.seed_ore = seed_ore
-			chunk_world.get_node("TileMap").set_tileset(load(PlanetData.allPlanetData["Planet001"]["TileSet"])) 
-			chunk_world.total_generation()
+			chunk_world.get_node("TileMap").set_tileset(load(PlanetData.allPlanetData["Planet001"]["TileSet"]))
+			if i < 21: 
+				chunk_world.total_generation()
 			add_child(chunk_instance)
 			

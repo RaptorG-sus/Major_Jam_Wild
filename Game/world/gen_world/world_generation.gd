@@ -13,6 +13,8 @@ var tree_04 : PackedScene = PreloadData.tree_04
 
 var all_tree :Array[PackedScene] = [tree_01,tree_02,tree_03,tree_04]
 
+var all_chunk : Dictionary = SaveLoad.saveFileData.all_chunk
+
 @export var planet_name : String
 @export var tileset : TileSet
 @export var planetData : Dictionary = PlanetData.allPlanetData
@@ -20,7 +22,7 @@ var earth_value : float = -0.25                                                 
 var ore_value : float = 0.3
 var tree_percentage : int = 5                                                                       # pourcentage d'arbre permettant changeant en fonction de la planete
 
-var range_generation : int = 16
+var range_generation : int = 4
 
 func _ready() -> void:
 	pass
@@ -43,7 +45,7 @@ func terrain_generation() -> void:
 	noise.seed = seed_world                                                                         # genere la seed du monde
 	for x in range(range_generation):
 		var ground :int = abs(noise.get_noise_2d(x_large + x,0)*10)  
-		for y in range(ground, 500):   # genere les petites buttes de terre permettant un monde plus agréable ( * 10 pour des buttes plus abruptes)
+		for y in range(ground, 128):   # genere les petites buttes de terre permettant un monde plus agréable ( * 10 pour des buttes plus abruptes)
 			if noise.get_noise_2d(x_large + x,y) > earth_value:			   # genere en fonction du noise et aura plus ou moins de terre dependant de earthvalue
 				map.set_cell(0, Vector2i(x,y), 0, Vector2i.ZERO, 1)     # pose les blocks
 		
@@ -71,7 +73,7 @@ func ore_generation() -> void:
 	noise.seed = seed_ore                                                                           # genere prend une nouvelle seed pour les minerais
 	for x in range(range_generation):                   
 											  # adoucir les minerais
-		for y in range(75,500):                                                                 # generation en y
+		for y in range(30,128):                                                                 # generation en y
 			if noise.get_noise_2d(x,y) > ore_value and map.get_cell_source_id(0,Vector2i(x,y)) == 0:                 # placement des minerais
 				map.erase_cell(0,Vector2i(x,y))
 				map.set_cell(0,Vector2i(x,y),1,Vector2i.ZERO,1)
@@ -88,15 +90,36 @@ func back_ground() -> void:
 				flag_background = false
 			else:
 				y += 1
-		for i in range(y,500):
+		for i in range(y,128):
 			map.set_cell(1,Vector2i(x,i),3,Vector2i.ZERO)
 
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	map.set_process(false)
-	map.visible = false
+	SaveLoad.saveFileData.all_chunk[str(map.global_position)] = []
+	for cell in map.get_used_cells(0):
+		SaveLoad.saveFileData.all_chunk[str(map.global_position)].append({
+				"position": cell,
+				"source_id": map.get_cell_source_id(0,cell),
+			})
+	for cell in map.get_used_cells(1):
+		SaveLoad.saveFileData.all_chunk[str(map.global_position)].append({
+				"position": cell,
+				"source_id": map.get_cell_source_id(1,cell),
+			})
+	map.clear()
+	print(map.global_position)
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	if str(map.global_position) in SaveLoad.saveFileData.all_chunk.keys():
+		for cell : Dictionary in SaveLoad.saveFileData.all_chunk[str(map.global_position)]:
+			if cell["source_id"]==3:
+				map.set_cell(1,cell["position"],3,Vector2i.ZERO)
+			else:
+				map.set_cell(0,cell["position"],cell["source_id"],Vector2i.ZERO,1)
+		SaveLoad.saveFileData.all_chunk.erase(str(map.global_position))
+	else:
+		total_generation()
+
 	map.set_process(true)
 	map.visible = true

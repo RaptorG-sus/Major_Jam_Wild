@@ -13,7 +13,6 @@ max_amount = 16
 metadata/_custom_type_script = "uid://dx1nggitpe4so"
 
 [node name="Gen_ore" instance=ExtResource("1_l0up0")]
-collision_mask = 0
 all_loot = Array[ExtResource("2_25fjo")]([SubResource("Resource_v0135")])
 Max_health = 1
 

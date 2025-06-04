@@ -6,6 +6,7 @@ class_name SaveDataResource
 @export var planet001_status : bool = false
 @export var planet001_create : Dictionary
 
+@export var all_chunk : Dictionary = {}
 @export var actual_planet : Dictionary
 
 @export var planet_name : String = "Planet_001"
