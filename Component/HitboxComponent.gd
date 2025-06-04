@@ -25,7 +25,6 @@ func damage(attack :AttackData) -> void:
 	
 	
 func _apply_damage(attack :AttackData) -> void:
-	print("damage")
 	hp -= attack.attack_damage
 	if hp <= 0:
 		# règle un probleme au niveau du moteur physique
@@ -65,7 +64,6 @@ func heal(item :HealData) -> void:
 func _loot_spawn(parent :Node2D) -> void:
 	
 	var array_loot :Array[InvSlot] = parent.all_loot
-	var grand_parent :Node2D = parent.get_parent()
 	var decalage :Vector2 
 	var gonna_loot :int
 	var new_loot :Node2D

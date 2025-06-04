@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://l8qhlw52wqqd"]
+[gd_scene load_steps=10 format=3 uid="uid://l8qhlw52wqqd"]
 
 [ext_resource type="Script" uid="uid://dctj0i0yoo2nb" path="res://Characters/Player/Inventory/Inv_ui.gd" id="1_bdfwv"]
 [ext_resource type="Script" uid="uid://c8kjtyv1t8n77" path="res://Characters/Player/Inventory/global_inventory.gd" id="2_jccat"]
 [ext_resource type="Texture2D" uid="uid://r17vaofxxqde" path="res://Sprite/Astronaute_right.png" id="3_00ghv"]
+[ext_resource type="Texture2D" uid="uid://k0lspb62dj4k" path="res://Sprite/Spr_inventory/spr_inv_item.png" id="3_1mk2u"]
 [ext_resource type="PackedScene" uid="uid://f27c7wsqnou5" path="res://Characters/Player/Inventory/inv_ui_slot.tscn" id="3_h7x6q"]
 [ext_resource type="PackedScene" uid="uid://dj1giy3qvujh8" path="res://Characters/Player/Inventory/crafting_ui_slot.tscn" id="5_km4om"]
+[ext_resource type="Texture2D" uid="uid://cy3e4rl6pddlq" path="res://Sprite/Spr_inventory/spr_inv_equipement.png" id="5_mgl5u"]
+[ext_resource type="Texture2D" uid="uid://dxjar27xbjgri" path="res://Sprite/Spr_inventory/spr_craft.png" id="8_akynj"]
+[ext_resource type="Texture2D" uid="uid://bfkjwmk6oe4nb" path="res://Sprite/Spr_inventory/spr_inventory.png" id="8_hferu"]
 
 [node name="Inv_ui" type="Control"]
 process_mode = 3
@@ -15,13 +19,17 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 68.0
+offset_top = 46.0
+offset_right = 68.0
+offset_bottom = 46.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_bdfwv")
 
 [node name="GlobalInventory" type="Control" parent="."]
-custom_minimum_size = Vector2(196, 80)
+custom_minimum_size = Vector2(192, 112)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -39,11 +47,17 @@ script = ExtResource("2_jccat")
 
 [node name="ObjectPanel" type="Panel" parent="GlobalInventory"]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(196, 80)
+custom_minimum_size = Vector2(192, 80)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -98.0
+offset_top = -40.0
+offset_right = 94.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -55,6 +69,7 @@ layout_mode = 0
 offset_left = 64.0
 offset_right = 192.0
 offset_bottom = 80.0
+texture = ExtResource("3_1mk2u")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
@@ -154,6 +169,7 @@ custom_minimum_size = Vector2(64, 80)
 layout_mode = 0
 offset_right = 64.0
 offset_bottom = 80.0
+texture = ExtResource("5_mgl5u")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
@@ -198,12 +214,12 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="CraftingPanel" type="Panel" parent="GlobalInventory"]
-custom_minimum_size = Vector2(196, 104)
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(192, 112)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -225,30 +241,29 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GlobalInventory"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -20.0
-offset_right = 40.0
-offset_bottom = 20.0
-grow_horizontal = 0
-grow_vertical = 2
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = 188.0
+offset_top = 46.0
+offset_right = 228.0
+offset_bottom = 94.0
+theme_override_constants/separation = 0
 alignment = 1
+metadata/_edit_group_ = true
 
 [node name="ObjectPanelButton" type="Button" parent="GlobalInventory/VBoxContainer"]
 custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
-text = "Inventory"
+icon = ExtResource("8_hferu")
+flat = true
 
 [node name="CraftingPanelButton" type="Button" parent="GlobalInventory/VBoxContainer"]
 custom_minimum_size = Vector2(32, 16)
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "Craft"
+icon = ExtResource("8_akynj")
+flat = true
+icon_alignment = 1
 
 [node name="Active_bar" type="HBoxContainer" parent="."]
 unique_name_in_owner = true
