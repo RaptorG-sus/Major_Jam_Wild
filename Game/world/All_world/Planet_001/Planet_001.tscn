@@ -7,6 +7,8 @@
 [node name="Planet001" type="Node2D"]
 script = ExtResource("1_4axpk")
 
+[node name="all_chunk" type="Node2D" parent="."]
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 offset = Vector2(576, 324)
 transform = Transform2D(1, 0, 0, 1, 576, 324)
@@ -26,3 +28,5 @@ motion_mirroring = Vector2(1000, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxTree001"]
 scale = Vector2(8, 8)
 texture = ExtResource("4_ht0jb")
+
+[node name="tree_gen_out_chunk" type="Node2D" parent="."]

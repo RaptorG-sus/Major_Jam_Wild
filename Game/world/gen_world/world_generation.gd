@@ -15,7 +15,7 @@ var all_tree :Array[PackedScene] = [tree_01,tree_02,tree_03,tree_04]
 
 var all_chunk : Dictionary = SaveLoad.saveFileData.all_chunk
 
-@export var planet_name : String
+@export var planet_name : String = PlanetData.planet_name
 @export var tileset : TileSet
 @export var planetData : Dictionary = PlanetData.allPlanetData
 var earth_value : float = -0.25                                                                     # pour plus ou moins de grotte / rocher volant
@@ -31,9 +31,7 @@ func _ready() -> void:
 func total_generation() -> void:
 	noise = $Noise.texture.noise
 	map = $TileMap
-	seed_world = randi_range(1, 65536)
-	seed_ore = randi_range(1,256)
-	tileset = load(planetData["Planet001"]["TileSet"])
+	tileset = load(planetData[planet_name]["TileSet"])
 	map.set_tileset(tileset)
 	terrain_generation()
 	tree_generation()
@@ -74,7 +72,7 @@ func ore_generation() -> void:
 	for x in range(range_generation):                   
 											  # adoucir les minerais
 		for y in range(30,128):                                                                 # generation en y
-			if noise.get_noise_2d(x,y) > ore_value and map.get_cell_source_id(0,Vector2i(x,y)) == 0:                 # placement des minerais
+			if noise.get_noise_2d(x_large + x,y) > ore_value and map.get_cell_source_id(0,Vector2i(x,y)) == 0:                 # placement des minerais
 				map.erase_cell(0,Vector2i(x,y))
 				map.set_cell(0,Vector2i(x,y),1,Vector2i.ZERO,1)
 

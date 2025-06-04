@@ -10,17 +10,28 @@ func _ready() -> void:
 	seed_ore = randi_range(1, 256)
 
 func buildPlanet() -> void:
+	PlanetData.planet_name = "Planet001"
 	if SaveLoad.saveFileData.planet001_status and !PlanetData.debug_planet:
 		planet_load = SaveLoad.saveFileData.planet001_create
-		$world_generation/TileMap.set_tileset(load(PlanetData.allPlanetData["Planet001"]["TileSet"]))
-		for tile :Dictionary in planet_load["Tile"]:
-			if tile["source_id"] == 3:
-				$world_generation/TileMap.set_cell(1, tile["position"], tile["source_id"], Vector2i(0,0))
-			else:
-				$world_generation/TileMap.set_cell(0, tile["position"], tile["source_id"], Vector2i(0,0),1)
-		
-		
-		for tree :Dictionary in planet_load["Tree"]:
+		seed_planet = SaveLoad.saveFileData.planet001_create["seed_planet"]
+		seed_ore = SaveLoad.saveFileData.planet001_create["seed_ore"]
+		SaveLoad.saveFileData.all_chunk = SaveLoad.saveFileData.planet001_create["chunk_unload"]
+		for i in range(2000):
+			var chunk_instance : Node2D = PreloadData.chunk.instantiate()
+			var chunk_world : Node2D = chunk_instance.get_node("world_generation")
+			chunk_instance.global_position.x = 32*(-40+4*i)
+			chunk_world.x_large = 4*i
+			chunk_world.seed_world = seed_planet
+			chunk_world.seed_ore = seed_ore
+			if str(chunk_instance.global_position) in SaveLoad.saveFileData.planet001_create["chunk_load"].keys():
+				for cell : Dictionary in SaveLoad.saveFileData.planet001_create["chunk_load"][str(chunk_instance.global_position)]:
+					if cell["source_id"] == 3:
+						chunk_world.get_node("TileMap").set_cell(1, cell["position"], cell["source_id"], Vector2i.ZERO)
+					else:
+						chunk_world.get_node("TileMap").set_cell(0, cell["position"], cell["source_id"], Vector2i.ZERO, 1)
+			$all_chunk.add_child(chunk_instance)
+
+		for tree :Dictionary in planet_load["tree"]:
 			var tree_instance :Node2D = Node2D.new()
 			var tilemap_instance :TileMap = TileMap.new()
 			tilemap_instance.set_tileset(load(PlanetData.allPlanetData["Planet001"]["TileSetTree"]))
@@ -28,20 +39,20 @@ func buildPlanet() -> void:
 			tilemap_instance.scale = Vector2i(2,2)
 			for cell :Dictionary in tree["tile"]:
 				tilemap_instance.set_cell(0,cell["position"], cell["source_id"], Vector2i(0,0), 1)
-			$world_generation/tree_gen.add_child(tree_instance)
+			$tree_gen_out_chunk.add_child(tree_instance)
 			tree_instance.add_child(tilemap_instance)
+
+
 	else:
 		for i in range(2000):
-			await get_tree().create_timer(0.1).timeout
 			var chunk_instance :Node2D = PreloadData.chunk.instantiate()
 			var chunk_world :Node2D = chunk_instance.get_node("world_generation")
 			chunk_instance.global_position.x = 32*(-40+4*i)
-			chunk_world.planet_name = "Planet_001"
 			chunk_world.x_large = 4*i
 			chunk_world.seed_world = seed_planet
 			chunk_world.seed_ore = seed_ore
 			chunk_world.get_node("TileMap").set_tileset(load(PlanetData.allPlanetData["Planet001"]["TileSet"]))
 			if i < 21: 
 				chunk_world.total_generation()
-			add_child(chunk_instance)
+			$all_chunk.add_child(chunk_instance)
 			

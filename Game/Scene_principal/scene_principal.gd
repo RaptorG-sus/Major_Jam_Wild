@@ -22,35 +22,42 @@ func _input(event: InputEvent) -> void:
 		SaveLoad.save_data()
 
 func _save_planet() -> void:
+	SaveLoad.saveFileData.actual_planet = {}
 	planet_name = PlanetData.planet_name
-	var tileMapPlanet :Node = planet_instance.get_node("world_generation").get_node("TileMap")
-	var treePlanet :Node = planet_instance.get_node("world_generation").get_node("tree_gen")
-	SaveLoad.saveFileData.actual_planet = {"Tile" : [],
-	"Tree" : []}
-	for cell :Vector2 in tileMapPlanet.get_used_cells(0):
-		SaveLoad.saveFileData.actual_planet["Tile"].append({
-			"position": cell,
-			"source_id": tileMapPlanet.get_cell_source_id(0,cell),
-		})
-	for cell :Vector2 in tileMapPlanet.get_used_cells(1):
-		SaveLoad.saveFileData.actual_planet["Tile"].append({
-			"position": cell,
-			"source_id": tileMapPlanet.get_cell_source_id(1,cell),
-		})
-	for tree in treePlanet.get_children():
-		print(tree)
-		var tileTree :Array = []
-		print(tree.get_child(0))
-		for cell :Vector2 in tree.get_child(0).get_used_cells(0):
-			print(cell)
-			tileTree.append({
-				"position" : cell,
-				"source_id" : tree.get_child(0).get_cell_source_id(0,cell)
+	SaveLoad.saveFileData.actual_planet["chunk_unload"] = SaveLoad.saveFileData.all_chunk
+	SaveLoad.saveFileData.actual_planet["chunk_load"] = {}
+	SaveLoad.saveFileData.actual_planet["tree"] = []
+	for chunk in planet_instance.get_node("all_chunk").get_children():
+		var tileMapPlanet :Node = chunk.get_node("world_generation").get_node("TileMap")
+		var treePlanet :Node = chunk.get_node("world_generation").get_node("tree_gen")
+		if len(tileMapPlanet.get_used_cells(0)) != 0:
+			SaveLoad.saveFileData.actual_planet["chunk_load"][str(chunk.global_position)] = []
+			for cell : Vector2i in tileMapPlanet.get_used_cells(0):
+				SaveLoad.saveFileData.actual_planet["chunk_load"][str(chunk.global_position)].append({
+					"position" = cell,
+					"source_id" = tileMapPlanet.get_cell_source_id(0, cell)
+				})
+			for cell : Vector2i in tileMapPlanet.get_used_cells(1):
+				SaveLoad.saveFileData.actual_planet["chunk_load"][str(chunk.global_position)].append({
+					"position" = cell,
+					"source_id" = tileMapPlanet.get_cell_source_id(1, cell)
+				})
+		for tree in treePlanet.get_children():
+			print(tree)
+			var tileTree :Array = []
+			print(tree.get_child(0))
+			for cell :Vector2 in tree.get_child(0).get_used_cells(0):
+				print(cell)
+				tileTree.append({
+					"position" : cell,
+					"source_id" : tree.get_child(0).get_cell_source_id(0,cell)
+				})
+			SaveLoad.saveFileData.actual_planet["tree"].append({
+				"position" : tree.global_position,
+				"tile" : tileTree
 			})
-		SaveLoad.saveFileData.actual_planet["Tree"].append({
-			"position" : tree.global_position,
-			"tile" : tileTree
-		})
+	SaveLoad.saveFileData.actual_planet["seed_planet"] = planet_instance.seed_planet
+	SaveLoad.saveFileData.actual_planet["seed_ore"] = planet_instance.seed_ore
 	
 	match planet_name:
 		"Planet001":
