@@ -44,6 +44,8 @@ func slot_interaction(slot :Panel) -> void:
 	if $GlobalInventory.is_open:
 		_drag_and_drop(slot)
 	else:
+		panel_from = null
+		slot_from_index = -1
 		var panel_index :int = slot.get_index(false)
 		usable.emit(parent_name(slot)[panel_index])
 	
@@ -65,13 +67,14 @@ func _drag_and_drop(panel_to :Panel) -> void:
 	var inv_to :Array[InvSlot] = parent_name(panel_to)
 
 
-	# Gère le moment ou on veut mettre ou enlever un item dans un slot d'equipement
+	# Gère le moment ou on veut enlever un item dans un slot d'equipement
 	if panel_from.get_parent().get_parent() == %Equipement:
 		if (inv_from[slot_from_index].item.item_data is ArmorData) :
 			var zero = ArmorData.new()
 			zero.setup(0, 0, 0)
 			update_player_stat.emit(zero)
 		
+	# Gère le moment ou on veut mettre un item dans un slot d'equipement
 	if panel_to.get_parent().get_parent() == %Equipement:
 		if !(inv_from[slot_from_index].item.item_data is ArmorData) :
 			panel_from = null
@@ -85,9 +88,15 @@ func _drag_and_drop(panel_to :Panel) -> void:
 	
 	
 	if (inv_from[slot_from_index].item == inv_to[slot_to_index].item):
-		inv_to[slot_to_index].amount += inv_from[slot_from_index].amount
-		inv_from[slot_from_index].amount = 0
-		inv_from[slot_from_index].item = null
+		if ( (inv_to[slot_to_index].amount + inv_from[slot_from_index].amount) > inv_to[slot_to_index].max_amount ):
+			# si la somme des deux est plus grand que le stack max, on remplit le slot_to et on réduit le slot_from
+			inv_from[slot_from_index].amount -= (inv_to[slot_to_index].max_amount - inv_to[slot_to_index].amount)
+			inv_to[slot_to_index].amount = inv_to[slot_to_index].max_amount
+		else:
+			# si la somme des deux est inferieur au stack max, tout vas bien 
+			inv_to[slot_to_index].amount += inv_from[slot_from_index].amount
+			inv_from[slot_from_index].amount = 0
+			inv_from[slot_from_index].item = null
 		
 	else:
 		var temp_slot :InvSlot = inv_from[slot_from_index]

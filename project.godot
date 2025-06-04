@@ -34,9 +34,10 @@ window/size/always_on_top=true
 [file_customization]
 
 folder_colors={
+"res://Characters/": "blue",
+"res://Characters/Player/": "blue",
 "res://Component/": "yellow",
 "res://Global_Script/": "yellow",
-"res://Player/": "blue",
 "res://Ressource/": "green",
 "res://Ressource/res_recipes/": "green",
 "res://SomeSystem/": "yellow",
@@ -94,6 +95,11 @@ save={
 2d_physics/layer_3="map"
 2d_physics/layer_5="tree"
 2d_physics/layer_6="rock"
+avoidance/layer_1="player"
+avoidance/layer_2="enemy"
+avoidance/layer_3="map"
+avoidance/layer_5="tree"
+avoidance/layer_6="rock"
 
 [physics]
 

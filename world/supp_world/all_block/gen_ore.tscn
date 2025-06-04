@@ -9,6 +9,7 @@
 script = ExtResource("2_25fjo")
 item = ExtResource("3_hqrdn")
 amount = 1
+max_amount = 16
 metadata/_custom_type_script = "uid://dx1nggitpe4so"
 
 [node name="Gen_ore" instance=ExtResource("1_l0up0")]

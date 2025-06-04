@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://jg1rthm1bemt"]
 
-[ext_resource type="Script" uid="uid://576734rg53f2" path="res://Player/Interaction/tools.gd" id="1_8fwdw"]
+[ext_resource type="Script" uid="uid://576734rg53f2" path="res://Characters/Player/Interaction/tools.gd" id="1_8fwdw"]
 
 [node name="Tools" type="Node2D"]
 z_index = 7

@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dj1giy3qvujh8"]
+[gd_scene load_steps=2 format=3 uid="uid://dj1giy3qvujh8"]
 
-[ext_resource type="Script" uid="uid://bmesfy887axjt" path="res://Player/Inventory/Crafting_ui_slot.gd" id="1_56lum"]
-[ext_resource type="PackedScene" uid="uid://clj4jdq70otwf" path="res://Player/Inventory/recipe_requirement.tscn" id="2_rtu23"]
+[ext_resource type="Script" uid="uid://bmesfy887axjt" path="res://Characters/Player/Inventory/Crafting_ui_slot.gd" id="1_56lum"]
 
 [node name="Crafting_ui_slot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
@@ -64,11 +63,5 @@ grow_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = 1
 alignment = 1
-
-[node name="Recipe_Requirement" parent="VBoxContainer" instance=ExtResource("2_rtu23")]
-layout_mode = 2
-
-[node name="Recipe_Requirement2" parent="VBoxContainer" instance=ExtResource("2_rtu23")]
-layout_mode = 2
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

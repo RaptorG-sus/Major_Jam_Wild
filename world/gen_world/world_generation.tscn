@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dmw5oat3pdiu8" path="res://world/supp_world/all_block/old_grass.tscn" id="2_j5epj"]
 [ext_resource type="PackedScene" uid="uid://2c4efy4dim1" path="res://world/supp_world/nature/all_tree/tree_gen/treeGen.tscn" id="4_8jo56"]
 [ext_resource type="PackedScene" uid="uid://cntwo0q7x10ve" path="res://world/supp_world/all_block/gen_ore.tscn" id="4_j5epj"]
-[ext_resource type="PackedScene" uid="uid://b3yxgbv2s7qf3" path="res://Player/Player.tscn" id="4_quu78"]
+[ext_resource type="PackedScene" uid="uid://b3yxgbv2s7qf3" path="res://Characters/Player/Player.tscn" id="4_quu78"]
 [ext_resource type="Texture2D" uid="uid://cduxsx3gr73ep" path="res://Sprite/Spr_background/planet_001/back_ground_first_planet.png" id="6_8jo56"]
 [ext_resource type="Texture2D" uid="uid://v8y1y3uwh3pm" path="res://Sprite/Spr_background/planet_001/back_ground_sous_terre.png" id="6_nrbq6"]
 [ext_resource type="Texture2D" uid="uid://baghiuchy0dlu" path="res://Sprite/Spr_background/planet_001/back_ground_tgree_002_first_planet.png" id="7_6um31"]

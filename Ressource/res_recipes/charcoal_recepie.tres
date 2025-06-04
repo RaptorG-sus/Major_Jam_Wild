@@ -9,12 +9,14 @@
 script = ExtResource("1_wq18v")
 item = ExtResource("2_vl3dl")
 amount = 3
+max_amount = 0
 metadata/_custom_type_script = "uid://dx1nggitpe4so"
 
 [sub_resource type="Resource" id="Resource_x087t"]
 script = ExtResource("1_wq18v")
 item = ExtResource("4_wq18v")
 amount = 1
+max_amount = 16
 metadata/_custom_type_script = "uid://dx1nggitpe4so"
 
 [resource]

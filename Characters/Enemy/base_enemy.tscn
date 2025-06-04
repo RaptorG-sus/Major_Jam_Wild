@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjtckeosrypst"]
+
+[ext_resource type="Script" uid="uid://bnvmao4woncnj" path="res://Characters/Enemy/base_enemy.gd" id="1_v2uhx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7xaro"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7k104"]
+radius = 360.0
+
+[node name="Base_Enemy" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 55
+script = ExtResource("1_v2uhx")
+speed = 100.0
+metadata/_edit_group_ = true
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7xaro")
+
+[node name="Agent" type="NavigationAgent2D" parent="."]
+path_desired_distance = 16.0
+target_desired_distance = 3.0
+avoidance_enabled = true
+avoidance_layers = 2
+avoidance_mask = 54
+debug_enabled = true
+
+[node name="Finder" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Finder"]
+shape = SubResource("CircleShape2D_7k104")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.001
+
+[connection signal="body_entered" from="Finder" to="." method="_on_finder_body_entered"]
+[connection signal="body_exited" from="Finder" to="." method="_on_finder_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

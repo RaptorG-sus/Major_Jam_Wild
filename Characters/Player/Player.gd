@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @export var inv :Inv 
 
@@ -7,7 +8,7 @@ extends CharacterBody2D
 @onready var player_stat :ArmorData = ArmorData.new()
 # Les scenes des outils de farm + arme de mélée
 var axe :PackedScene = null
-var pickaxe :PackedScene = preload("res://Player/Interaction/pickaxe.tscn")
+var pickaxe :PackedScene = PreloadData.pickaxe_preload
 
 @onready var usable :InvItem = null
 

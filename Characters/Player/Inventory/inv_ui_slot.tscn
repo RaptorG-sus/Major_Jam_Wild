@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://f27c7wsqnou5"]
 
-[ext_resource type="Script" uid="uid://bfvtwrgad0f4" path="res://Player/Inventory/Inv_ui_slot.gd" id="1_eduqw"]
+[ext_resource type="Script" uid="uid://bfvtwrgad0f4" path="res://Characters/Player/Inventory/Inv_ui_slot.gd" id="1_eduqw"]
 
 [node name="Inv_UI_slot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)

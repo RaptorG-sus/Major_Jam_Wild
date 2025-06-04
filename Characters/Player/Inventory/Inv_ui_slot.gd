@@ -7,6 +7,7 @@ extends Panel
 signal pressed(node :Panel)
 
 
+# fonction qui met a jour l'AFFICHAGE
 func update(slot :InvSlot) -> void:
 	if !slot.item:
 		item_visual.visible = false

@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://l8qhlw52wqqd"]
 
-[ext_resource type="Script" uid="uid://dctj0i0yoo2nb" path="res://Player/Inventory/Inv_ui.gd" id="1_bdfwv"]
-[ext_resource type="Script" uid="uid://c8kjtyv1t8n77" path="res://Player/Inventory/global_inventory.gd" id="2_jccat"]
+[ext_resource type="Script" uid="uid://dctj0i0yoo2nb" path="res://Characters/Player/Inventory/Inv_ui.gd" id="1_bdfwv"]
+[ext_resource type="Script" uid="uid://c8kjtyv1t8n77" path="res://Characters/Player/Inventory/global_inventory.gd" id="2_jccat"]
 [ext_resource type="Texture2D" uid="uid://r17vaofxxqde" path="res://Sprite/Astronaute_right.png" id="3_00ghv"]
-[ext_resource type="PackedScene" uid="uid://f27c7wsqnou5" path="res://Player/Inventory/inv_ui_slot.tscn" id="3_h7x6q"]
-[ext_resource type="PackedScene" uid="uid://dj1giy3qvujh8" path="res://Player/Inventory/crafting_ui_slot.tscn" id="5_km4om"]
+[ext_resource type="PackedScene" uid="uid://f27c7wsqnou5" path="res://Characters/Player/Inventory/inv_ui_slot.tscn" id="3_h7x6q"]
+[ext_resource type="PackedScene" uid="uid://dj1giy3qvujh8" path="res://Characters/Player/Inventory/crafting_ui_slot.tscn" id="5_km4om"]
 
 [node name="Inv_ui" type="Control"]
 process_mode = 3
@@ -198,11 +198,12 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="CraftingPanel" type="Panel" parent="GlobalInventory"]
-custom_minimum_size = Vector2(196, 80)
+custom_minimum_size = Vector2(196, 104)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
