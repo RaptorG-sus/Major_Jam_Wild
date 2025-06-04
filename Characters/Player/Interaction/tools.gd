@@ -12,7 +12,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	rotation_degrees += 90 * delta * (1 / $Timer.wait_time )
 
-
 func _on_hitbox_area_entered(area: Area2D) -> void:
 	if area is HitboxComponent:
 		

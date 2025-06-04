@@ -1,0 +1,27 @@
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://b1n5sb57mm2pv"]
+
+[ext_resource type="PackedScene" uid="uid://87iswcs4qb6i" path="res://Game/world/supp_world/all_block/grass.tscn" id="1_eq2e6"]
+[ext_resource type="PackedScene" uid="uid://cntwo0q7x10ve" path="res://Game/world/supp_world/all_block/gen_ore.tscn" id="2_waywf"]
+[ext_resource type="PackedScene" uid="uid://2c4efy4dim1" path="res://Game/world/supp_world/nature/all_tree/tree_gen/treeGen.tscn" id="3_rb22p"]
+[ext_resource type="Texture2D" uid="uid://v8y1y3uwh3pm" path="res://Sprite/Spr_background/planet_001/back_ground_sous_terre.png" id="4_2l6cs"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_eq2e6"]
+scenes/1/scene = ExtResource("1_eq2e6")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_8jo56"]
+scenes/1/scene = ExtResource("2_waywf")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6um31"]
+scenes/1/scene = ExtResource("3_rb22p")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_eq2e6"]
+texture = ExtResource("4_2l6cs")
+0:0/0 = 0
+
+[resource]
+physics_layer_0/collision_layer = 33
+physics_layer_0/collision_mask = 33
+sources/1 = SubResource("TileSetScenesCollectionSource_8jo56")
+sources/2 = SubResource("TileSetScenesCollectionSource_6um31")
+sources/3 = SubResource("TileSetAtlasSource_eq2e6")
+sources/0 = SubResource("TileSetScenesCollectionSource_eq2e6")

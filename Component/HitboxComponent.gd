@@ -25,17 +25,18 @@ func damage(attack :AttackData) -> void:
 	
 	
 func _apply_damage(attack :AttackData) -> void:
+	print("damage")
 	hp -= attack.attack_damage
 	if hp <= 0:
 		# règle un probleme au niveau du moteur physique
 		call_deferred("_death")
 		
 		
-func _death():
+func _death() -> void:
 	DestructionManager.append_queue(self)
 	
 
-func _apply_destruction():
+func _apply_destruction() -> void:
 	var parent :Node2D = get_parent()
 
 		
@@ -43,6 +44,7 @@ func _apply_destruction():
 		parent.break_tree()
 	elif parent is Ore:
 		_loot_spawn(parent)
+		parent.get_parent().erase_cell(0,Vector2i(int(parent.position.x/16),int(parent.position.y/16)))
 	else:
 		parent.queue_free()
 		
@@ -50,7 +52,7 @@ func _apply_destruction():
 func heal(item :HealData) -> void:
 
 	var boucle :float = item.heal_time
-	var add_hp :float = item.heal/item.heal_time
+	var add_hp :float = float(item.heal)/item.heal_time
 	
 	while (boucle > 0):
 		hp += add_hp

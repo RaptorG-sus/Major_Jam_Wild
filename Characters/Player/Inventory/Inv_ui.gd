@@ -70,7 +70,7 @@ func _drag_and_drop(panel_to :Panel) -> void:
 	# Gère le moment ou on veut enlever un item dans un slot d'equipement
 	if panel_from.get_parent().get_parent() == %Equipement:
 		if (inv_from[slot_from_index].item.item_data is ArmorData) :
-			var zero = ArmorData.new()
+			var zero :ArmorData = ArmorData.new()
 			zero.setup(0, 0, 0)
 			update_player_stat.emit(zero)
 		

@@ -9,7 +9,7 @@ func _process(_delta: float) -> void:
 	var count :int = 0
 
 	while (to_destroy.size() > 0 && count < MAX_DESTRUCTION_PER_FRAME):
-		var node = to_destroy.pop_front()
+		var node :Node = to_destroy.pop_front()
 		if is_instance_valid(node):
 			node._apply_destruction()
 		count += 1

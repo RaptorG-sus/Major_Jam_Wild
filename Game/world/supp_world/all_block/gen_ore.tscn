@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://cntwo0q7x10ve"]
+
+[ext_resource type="Texture2D" uid="uid://bjenowfd7h53i" path="res://Sprite/Spr_block/ore_gen.png" id="1_ksll6"]
+[ext_resource type="PackedScene" uid="uid://60jwa58ougx0" path="res://Game/world/supp_world/all_block/base_ore.tscn" id="1_l0up0"]
+[ext_resource type="Script" uid="uid://dx1nggitpe4so" path="res://SomeSystem/Inventory_Ststem/Inventory_slot.gd" id="2_25fjo"]
+[ext_resource type="Resource" uid="uid://cbatfcb2g8mbq" path="res://Ressource/res_loot/ore_break_gen.tres" id="3_hqrdn"]
+
+[sub_resource type="Resource" id="Resource_v0135"]
+script = ExtResource("2_25fjo")
+item = ExtResource("3_hqrdn")
+amount = 1
+max_amount = 16
+metadata/_custom_type_script = "uid://dx1nggitpe4so"
+
+[node name="Gen_ore" instance=ExtResource("1_l0up0")]
+collision_mask = 0
+all_loot = Array[ExtResource("2_25fjo")]([SubResource("Resource_v0135")])
+Max_health = 1
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("1_ksll6")

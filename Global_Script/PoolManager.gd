@@ -13,7 +13,7 @@ enum Node_Type{
 func _ready() -> void:
 	for i in ALL_POOL_SIZE:
 		var loot :Node2D = loot_scene.instantiate()
-		_on_off(loot, 0, false)
+		_on_off(loot, Node_Type.LOOT, false)
 		loot_pool.append(loot)
 		add_child(loot)
 		
@@ -54,7 +54,7 @@ func get_in_pool(node_type :Node_Type) -> Node2D:
 	return node
 	
 	
-func free_node(node: Node2D, node_type :Node_Type):
+func free_node(node: Node2D, node_type :Node_Type) -> void:
 	_on_off(node, node_type, false)
 	node.global_position = Vector2.ZERO
 

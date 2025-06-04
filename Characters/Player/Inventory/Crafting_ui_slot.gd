@@ -15,7 +15,7 @@ func initialisation_crafting_recipe(crafting_recipe :CraftingRecipe) -> void:
 	else: 
 		item_visual.visible = true
 		
-		var slot = crafting_recipe.slot
+		var slot :InvSlot = crafting_recipe.slot
 		item_visual.texture = slot.item.texture
 		amount_text.visible = false
 		if slot.amount > 1 :
@@ -26,7 +26,7 @@ func initialisation_crafting_recipe(crafting_recipe :CraftingRecipe) -> void:
 
 func generation_requirement(recipe_requirement :Array[InvSlot]) -> void:
 	for slot in recipe_requirement:
-		var requirement = requirement_scene.instantiate()
+		var requirement :Node = requirement_scene.instantiate()
 		$VBoxContainer.add_child(requirement)
 		requirement.initialisation_requirement(slot)
 

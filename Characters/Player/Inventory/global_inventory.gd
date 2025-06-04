@@ -118,7 +118,7 @@ func _having_requirement(slot_need :InvSlot) -> bool:
 	if sum < amount_need:
 		return false
 	
-	var slot_index
+	var slot_index :int
 	
 	# Suppression des items dans l'inventaires
 	for slot in array_inv_slots:
