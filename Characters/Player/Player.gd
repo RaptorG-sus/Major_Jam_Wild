@@ -6,6 +6,7 @@ class_name Player
 
 # Les stats du player
 @onready var player_stat :ArmorData = ArmorData.new()
+@onready var animation :AnimatedSprite2D = $AnimatedSprite2D
 # Les scenes des outils de farm + arme de mélée
 var axe :PackedScene = null
 var pickaxe :PackedScene = PreloadData.pickaxe_preload
@@ -45,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	velocity.x = velocity.x+(target_velocity_x-velocity.x)*exp(-decay*delta)
 	var velocity_x_sign : float = sign(velocity.x)
 	if velocity_x_sign != last_velocity_x_sign:
-		$AnimatedSprite2D.flip_h = (velocity.x < 0.0)
+		animation.flip_h = (velocity.x < 0.0)
 		last_velocity_x_sign = velocity_x_sign
 	if is_on_floor():
 		if Input.is_action_just_pressed("haut"):
@@ -66,13 +67,13 @@ func _input(event: InputEvent) -> void:
 		direction2 = Vector2.ZERO
 		
 	# Gère l'animation du joueur, en fonction de ses déplacements ( en com pour l'instant )
-	"""	match(direction):
-		1: animation.play("Sprit_right")
-		-1: animation.play("Sprit_left")
+	match(int(direction2.x)):
+		1: animation.play("move_right"); 
+		-1: animation.play("move_right"); 
 		0:
 			animation.stop()
 			animation.set_frame(0)
-	"""
+
 	# Gère l'attaque du joueur
 	if event.is_action_pressed("Interaction") && usable != null:
 		can_move = false
