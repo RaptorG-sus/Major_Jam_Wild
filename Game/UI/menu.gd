@@ -15,6 +15,7 @@ func _on_settings_pressed() -> void:
 	pass # Replace with function body.
 
 func _on_start_pressed() -> void:
-	PlanetData.planet_name = SaveLoad.saveFileData.planet_name
+	if SaveLoad.saveFileData.planet_name != "":
+		PlanetData.planet_name = SaveLoad.saveFileData.planet_name
 	PlanetData.debug_planet = false
 	get_tree().change_scene_to_packed(scene_principal)

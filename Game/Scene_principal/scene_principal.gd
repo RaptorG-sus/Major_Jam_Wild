@@ -7,6 +7,7 @@ var planet_name :String
 
 func _ready() -> void:
 	SaveLoad.load_data()
+	print(PlanetData.planet_name, "baba")
 	var planet :PackedScene = PlanetData.allPlanetData[PlanetData.planet_name]["Scene"]
 	planet_instance = planet.instantiate()
 	add_child(planet_instance)
