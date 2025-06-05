@@ -2,8 +2,8 @@ extends CharacterBody2D
 class_name Player
 
 @export var inv :Inv 
+@export var base_player_stat : ArmorData
 
-@onready var base_player_stat :ArmorData = ArmorData.new()
 # Les stats du player
 @onready var player_stat :ArmorData = ArmorData.new()
 # Les scenes des outils de farm + arme de mélée
@@ -22,6 +22,8 @@ var can_move :bool = true
 # Modifie la vitesse en fonction de la taille du sprite du player
 var taille_sprite :int = 64
 
+var last_velocity_x_sign : float = 1
+
 
 func _ready() -> void:
 	if !($Inv_ui.update_player_stat.is_connected(stat_update)):
@@ -29,8 +31,7 @@ func _ready() -> void:
 	if !($Inv_ui.usable.is_connected(full_usable)):
 		$Inv_ui.usable.connect(full_usable)
 
-	base_player_stat.setup(10, 0, 1000)
-	player_stat.setup(10, 0, 1000)
+	player_stat = base_player_stat.duplicate()
 
 	$HitboxComponent.Max_health = player_stat.hp
 
@@ -38,7 +39,19 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Gère la vitesse ( 64 totalement arbitraire )
 	#velocity = delta * Vector2(direction, 1) * player_stat.speed * taille_sprite
-	velocity = delta * direction2 * player_stat.speed * taille_sprite
+	var gravity : float = 200
+	var decay : float = player_stat.ground_speed_decay if is_on_floor() else player_stat.air_speed_decay
+	var target_velocity_x : float = direction2.x * player_stat.speed * taille_sprite
+	velocity.x = velocity.x+(target_velocity_x-velocity.x)*exp(-decay*delta)
+	var velocity_x_sign : float = sign(velocity.x)
+	if velocity_x_sign != last_velocity_x_sign:
+		$AnimatedSprite2D.flip_h = (velocity.x < 0.0)
+		last_velocity_x_sign = velocity_x_sign
+	if is_on_floor():
+		if Input.is_action_just_pressed("haut"):
+			velocity.y = -player_stat.jump_strength
+	else:
+		velocity.y += delta*gravity
 	move_and_slide()
 
 
