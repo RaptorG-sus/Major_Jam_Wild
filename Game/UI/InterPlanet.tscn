@@ -1,0 +1,166 @@
+[gd_scene load_steps=11 format=3 uid="uid://cjpa35o130665"]
+
+[ext_resource type="Script" uid="uid://bj6201yh7244g" path="res://Game/UI/inter_planet.gd" id="1_7r3vb"]
+[ext_resource type="Texture2D" uid="uid://cf4kxyrts2qug" path="res://Sprite/Spr_Planet/planet001.png" id="2_1w7bk"]
+[ext_resource type="Texture2D" uid="uid://sahgoguna8v3" path="res://Sprite/Spr_Planet/planet002.png" id="3_kfmb7"]
+[ext_resource type="Texture2D" uid="uid://bx6ynnlnc12f6" path="res://Sprite/Spr_Planet/cadena.png" id="4_0klth"]
+[ext_resource type="Texture2D" uid="uid://v11j5ukhsxcb" path="res://Sprite/Spr_Planet/planet003.png" id="5_w6vtv"]
+[ext_resource type="Texture2D" uid="uid://cgskmrmd6qstl" path="res://Sprite/Spr_Planet/planet004.png" id="6_ayw8r"]
+[ext_resource type="Texture2D" uid="uid://bn65qhe4nmn7u" path="res://Sprite/Spr_Planet/planet005.png" id="7_b44bq"]
+
+[sub_resource type="Gradient" id="Gradient_a44ki"]
+colors = PackedColorArray(1.23335e-07, 0, 0.170818, 1, 0.171583, 0.0682665, 0.220081, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ykyyk"]
+frequency = 0.0007
+fractal_lacunarity = 3.57
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g757i"]
+color_ramp = SubResource("Gradient_a44ki")
+noise = SubResource("FastNoiseLite_ykyyk")
+
+[node name="InterPlanet" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7r3vb")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_g757i")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 88.0
+offset_top = 171.0
+offset_right = 152.0
+offset_bottom = 235.0
+scale = Vector2(2.295, 2.295)
+texture_normal = ExtResource("2_1w7bk")
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 259.0
+offset_top = 437.0
+offset_right = 323.0
+offset_bottom = 501.0
+scale = Vector2(2.295, 2.295)
+texture_normal = ExtResource("3_kfmb7")
+
+[node name="Panel" type="Panel" parent="TextureButton2"]
+layout_mode = 0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="TextureRect" type="TextureRect" parent="TextureButton2/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_0klth")
+
+[node name="TextureButton3" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 528.0
+offset_top = 257.0
+offset_right = 592.0
+offset_bottom = 321.0
+scale = Vector2(2.295, 2.295)
+texture_normal = ExtResource("5_w6vtv")
+
+[node name="Panel" type="Panel" parent="TextureButton3"]
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="TextureRect" type="TextureRect" parent="TextureButton3/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_0klth")
+
+[node name="TextureButton4" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 793.0
+offset_top = 54.0
+offset_right = 857.0
+offset_bottom = 118.0
+scale = Vector2(2.295, 2.295)
+texture_normal = ExtResource("6_ayw8r")
+
+[node name="Panel" type="Panel" parent="TextureButton4"]
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="TextureRect" type="TextureRect" parent="TextureButton4/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_0klth")
+
+[node name="TextureButton5" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 965.0
+offset_top = 310.0
+offset_right = 1029.0
+offset_bottom = 374.0
+scale = Vector2(2.295, 2.295)
+texture_normal = ExtResource("7_b44bq")
+
+[node name="Panel" type="Panel" parent="TextureButton5"]
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="TextureRect" type="TextureRect" parent="TextureButton5/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_0klth")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
+[connection signal="pressed" from="TextureButton3" to="." method="_on_texture_button_3_pressed"]
+[connection signal="pressed" from="TextureButton4" to="." method="_on_texture_button_4_pressed"]
+[connection signal="pressed" from="TextureButton5" to="." method="_on_texture_button_5_pressed"]

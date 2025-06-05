@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Inv" load_steps=42 format=3 uid="uid://wftd8cqvx4gi"]
+[gd_resource type="Resource" script_class="Inv" load_steps=43 format=3 uid="uid://wftd8cqvx4gi"]
 
 [ext_resource type="Script" uid="uid://dx1nggitpe4so" path="res://SomeSystem/Inventory_Ststem/Inventory_slot.gd" id="1_tki1u"]
 [ext_resource type="Resource" uid="uid://dq2asjwsbr4ei" path="res://Ressource/res_item/pickaxe/pickaxe_test.tres" id="2_tki1u"]
+[ext_resource type="Resource" uid="uid://3yx8m7nk1wsw" path="res://Ressource/res_item/ore/charcoal.tres" id="3_qm4oh"]
 [ext_resource type="Script" uid="uid://lof466lsxj0l" path="res://SomeSystem/Inventory_Ststem/Inventory.gd" id="3_tq1ub"]
 
 [sub_resource type="Resource" id="Resource_o2d1k"]
@@ -91,7 +92,8 @@ metadata/_custom_type_script = "uid://dx1nggitpe4so"
 
 [sub_resource type="Resource" id="Resource_tq1ub"]
 script = ExtResource("1_tki1u")
-amount = 0
+item = ExtResource("3_qm4oh")
+amount = 5
 max_amount = 0
 metadata/_custom_type_script = "uid://dx1nggitpe4so"
 
