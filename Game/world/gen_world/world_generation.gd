@@ -58,6 +58,7 @@ func tree_generation() -> void:
 				var y :int = 0
 				while map.get_cell_source_id(0,Vector2i(x,y)) != 0:                          # pour poser le block au plus bas possible jusqu'a la hauteur voulue (suite du while)
 					y+=1
+				print("test")
 				var temp : int = randi_range(0,len(all_tree)-1)
 				var tree : Node2D = all_tree[temp].instantiate()
 				tree.path = all_tree[temp]

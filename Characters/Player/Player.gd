@@ -39,7 +39,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	# Gère la vitesse ( 64 totalement arbitraire )
 	#velocity = delta * Vector2(direction, 1) * player_stat.speed * taille_sprite
-	var gravity : float = 200
+	var gravity : float = 800
 	var decay : float = player_stat.ground_speed_decay if is_on_floor() else player_stat.air_speed_decay
 	var target_velocity_x : float = direction2.x * player_stat.speed * taille_sprite
 	velocity.x = velocity.x+(target_velocity_x-velocity.x)*exp(-decay*delta)
