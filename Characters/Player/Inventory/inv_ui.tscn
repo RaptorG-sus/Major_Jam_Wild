@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://l8qhlw52wqqd"]
+[gd_scene load_steps=9 format=3 uid="uid://l8qhlw52wqqd"]
 
 [ext_resource type="Script" uid="uid://dctj0i0yoo2nb" path="res://Characters/Player/Inventory/Inv_ui.gd" id="1_bdfwv"]
 [ext_resource type="Script" uid="uid://c8kjtyv1t8n77" path="res://Characters/Player/Inventory/global_inventory.gd" id="2_jccat"]
-[ext_resource type="Texture2D" uid="uid://r17vaofxxqde" path="res://Sprite/Astronaute_right.png" id="3_00ghv"]
 [ext_resource type="Texture2D" uid="uid://k0lspb62dj4k" path="res://Sprite/Spr_inventory/spr_inv_item.png" id="3_1mk2u"]
 [ext_resource type="PackedScene" uid="uid://f27c7wsqnou5" path="res://Characters/Player/Inventory/inv_ui_slot.tscn" id="3_h7x6q"]
 [ext_resource type="PackedScene" uid="uid://dj1giy3qvujh8" path="res://Characters/Player/Inventory/crafting_ui_slot.tscn" id="5_km4om"]
@@ -174,11 +173,6 @@ patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
-
-[node name="Sprite2D" type="Sprite2D" parent="GlobalInventory/ObjectPanel/Equipement"]
-position = Vector2(33, 15)
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_00ghv")
 
 [node name="GridContainer" type="GridContainer" parent="GlobalInventory/ObjectPanel/Equipement"]
 custom_minimum_size = Vector2(0, 48)
