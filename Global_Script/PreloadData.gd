@@ -21,3 +21,5 @@ var debug_zone : PackedScene = preload("res://debug/debug_zone.tscn")
 var menu : PackedScene = preload("res://Game/UI/menu.tscn")
 
 var loading_screen : PackedScene = preload("res://Game/UI/loading_screen.tscn")
+
+var screen_interPlanet : PackedScene = preload("res://Game/UI/InterPlanet.tscn")

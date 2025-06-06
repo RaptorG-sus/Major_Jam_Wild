@@ -19,7 +19,7 @@ func buildPlanet() -> void:
 			var chunk_instance : Node2D = PreloadData.chunk.instantiate()
 			var chunk_world : Node2D = chunk_instance.get_node("world_generation")
 			chunk_world.get_node("TileMap").set_tileset(load(PlanetData.allPlanetData[PlanetData.planet_name]["TileSet"]))
-			chunk_instance.global_position.x = 32*(-40+4*i)
+			chunk_instance.global_position.x = 32*(-4000+4*i)
 			chunk_world.x_large = 4*i
 			chunk_world.seed_world = seed_planet
 			chunk_world.seed_ore = seed_ore
@@ -48,7 +48,7 @@ func buildPlanet() -> void:
 			SaveLoad.saveFileData.planet_name = PlanetData.planet_name
 			var chunk_instance :Node2D = PreloadData.chunk.instantiate()
 			var chunk_world :Node2D = chunk_instance.get_node("world_generation")
-			chunk_instance.global_position.x = 32*(-40+4*i)
+			chunk_instance.global_position.x = 32*(-4000+4*i)
 			chunk_world.x_large = 4*i
 			chunk_world.seed_world = seed_planet
 			chunk_world.seed_ore = seed_ore

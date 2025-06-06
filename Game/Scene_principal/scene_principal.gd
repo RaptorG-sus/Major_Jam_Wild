@@ -21,6 +21,8 @@ func _input(event: InputEvent) -> void:
 		SaveLoad.saveFileData.planet001_status = true
 		_save_planet()
 		SaveLoad.save_data()
+	if event.is_action_pressed("TpShip"):
+		$Player.global_position = Vector2(0, -100)
 
 func _save_planet() -> void:
 	SaveLoad.saveFileData.actual_planet = {}
@@ -63,7 +65,9 @@ func _save_planet() -> void:
 	match planet_name:
 		"Planet001":
 			SaveLoad.saveFileData.planet001_create = SaveLoad.saveFileData.actual_planet
-			SaveLoad.saveFileData.planet002_status = true
+			SaveLoad.saveFileData.planet_name = "Planet001"
+			SaveLoad.saveFileData.planet001_status = true
 		"Planet002":
 			SaveLoad.saveFileData.planet002_create = SaveLoad.saveFileData.actual_planet
+			SaveLoad.saveFileData.planet_name = "Planet002"
 			SaveLoad.saveFileData.planet002_status = true

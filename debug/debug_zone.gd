@@ -3,6 +3,7 @@ extends Control
 var menu :PackedScene = PreloadData.menu
 
 func _on_planet_001_pressed() -> void:
+	
 	PlanetData.planet_name = "Planet001"
 	PlanetData.debug_planet = true
 	SaveLoad.saveFileData.all_chunk = {}   

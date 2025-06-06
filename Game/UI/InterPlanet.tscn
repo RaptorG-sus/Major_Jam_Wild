@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjpa35o130665"]
+[gd_scene load_steps=13 format=3 uid="uid://cjpa35o130665"]
 
 [ext_resource type="Script" uid="uid://bj6201yh7244g" path="res://Game/UI/inter_planet.gd" id="1_7r3vb"]
 [ext_resource type="Texture2D" uid="uid://cf4kxyrts2qug" path="res://Sprite/Spr_Planet/planet001.png" id="2_1w7bk"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://v11j5ukhsxcb" path="res://Sprite/Spr_Planet/planet003.png" id="5_w6vtv"]
 [ext_resource type="Texture2D" uid="uid://cgskmrmd6qstl" path="res://Sprite/Spr_Planet/planet004.png" id="6_ayw8r"]
 [ext_resource type="Texture2D" uid="uid://bn65qhe4nmn7u" path="res://Sprite/Spr_Planet/planet005.png" id="7_b44bq"]
+[ext_resource type="Texture2D" uid="uid://dxmbqajejsdjk" path="res://Sprite/Spr_inventory/spr_label.png" id="8_1w7bk"]
 
 [sub_resource type="Gradient" id="Gradient_a44ki"]
 colors = PackedColorArray(1.23335e-07, 0, 0.170818, 1, 0.171583, 0.0682665, 0.220081, 1)
@@ -14,6 +15,12 @@ colors = PackedColorArray(1.23335e-07, 0, 0.170818, 1, 0.171583, 0.0682665, 0.22
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ykyyk"]
 frequency = 0.0007
 fractal_lacunarity = 3.57
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7r3vb"]
+width = 1152
+height = 648
+color_ramp = SubResource("Gradient_a44ki")
+noise = SubResource("FastNoiseLite_ykyyk")
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_g757i"]
 color_ramp = SubResource("Gradient_a44ki")
@@ -28,7 +35,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_7r3vb")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+texture = SubResource("NoiseTexture2D_7r3vb")
+
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -85,6 +97,7 @@ scale = Vector2(2.295, 2.295)
 texture_normal = ExtResource("5_w6vtv")
 
 [node name="Panel" type="Panel" parent="TextureButton3"]
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 
@@ -113,6 +126,7 @@ scale = Vector2(2.295, 2.295)
 texture_normal = ExtResource("6_ayw8r")
 
 [node name="Panel" type="Panel" parent="TextureButton4"]
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 
@@ -141,6 +155,7 @@ scale = Vector2(2.295, 2.295)
 texture_normal = ExtResource("7_b44bq")
 
 [node name="Panel" type="Panel" parent="TextureButton5"]
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 64.0
 
@@ -159,8 +174,25 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_0klth")
 
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 133.0
+offset_bottom = 65.0
+texture = ExtResource("8_1w7bk")
+
+[node name="Button" type="Button" parent="TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Go Back"
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="TextureButton2" to="." method="_on_texture_button_2_pressed"]
 [connection signal="pressed" from="TextureButton3" to="." method="_on_texture_button_3_pressed"]
 [connection signal="pressed" from="TextureButton4" to="." method="_on_texture_button_4_pressed"]
 [connection signal="pressed" from="TextureButton5" to="." method="_on_texture_button_5_pressed"]
+[connection signal="pressed" from="TextureRect2/Button" to="." method="_on_button_pressed"]

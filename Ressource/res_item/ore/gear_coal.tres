@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://crfaco1pqf4oh"]
+
+[ext_resource type="Script" uid="uid://brsevjhy453jg" path="res://SomeSystem/Inventory_Ststem/Inventory_item.gd" id="1_2p80m"]
+[ext_resource type="Texture2D" uid="uid://b7eow12yxgcmj" path="res://Sprite/rouage_planet001.png" id="2_ycphs"]
+
+[resource]
+script = ExtResource("1_2p80m")
+name = "gear_coal"
+texture = ExtResource("2_ycphs")
+metadata/_custom_type_script = "uid://brsevjhy453jg"

@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="CraftingRecipe" load_steps=7 format=3 uid="uid://dgvhiir4l6sk0"]
+
+[ext_resource type="Script" uid="uid://dx1nggitpe4so" path="res://SomeSystem/Inventory_Ststem/Inventory_slot.gd" id="1_f2pcr"]
+[ext_resource type="Resource" uid="uid://crfaco1pqf4oh" path="res://Ressource/res_item/ore/gear_coal.tres" id="2_4lrvw"]
+[ext_resource type="Resource" uid="uid://3yx8m7nk1wsw" path="res://Ressource/res_item/ore/charcoal.tres" id="2_gomgw"]
+[ext_resource type="Script" uid="uid://cnyi672y5r1jb" path="res://SomeSystem/Crafting_System/CraftingRecepie.gd" id="2_ltht6"]
+
+[sub_resource type="Resource" id="Resource_wpc1l"]
+script = ExtResource("1_f2pcr")
+item = ExtResource("2_gomgw")
+amount = 2
+max_amount = 0
+metadata/_custom_type_script = "uid://dx1nggitpe4so"
+
+[sub_resource type="Resource" id="Resource_h03ml"]
+script = ExtResource("1_f2pcr")
+item = ExtResource("2_4lrvw")
+amount = 1
+max_amount = 8
+metadata/_custom_type_script = "uid://dx1nggitpe4so"
+
+[resource]
+script = ExtResource("2_ltht6")
+slot = SubResource("Resource_h03ml")
+requirement = Array[ExtResource("1_f2pcr")]([SubResource("Resource_wpc1l")])
+metadata/_custom_type_script = "uid://cnyi672y5r1jb"

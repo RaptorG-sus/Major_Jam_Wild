@@ -1,0 +1,195 @@
+[gd_scene load_steps=6 format=3 uid="uid://bu16gjdx2lf6x"]
+
+[ext_resource type="Texture2D" uid="uid://d4i20x042gfm3" path="res://Sprite/Spr_inventory/spr_inv_slot.png" id="1_gsy6q"]
+[ext_resource type="Script" uid="uid://60ovqffwib6y" path="res://Characters/spaceship/inv_spaceship.gd" id="1_htqt8"]
+[ext_resource type="Texture2D" uid="uid://bjenowfd7h53i" path="res://Sprite/Spr_block/ore_gen.png" id="2_23bf6"]
+[ext_resource type="Texture2D" uid="uid://dxmbqajejsdjk" path="res://Sprite/Spr_inventory/spr_label.png" id="2_tiu1t"]
+[ext_resource type="Texture2D" uid="uid://b7eow12yxgcmj" path="res://Sprite/rouage_planet001.png" id="3_1pegw"]
+
+[node name="InvSpaceship" type="Node2D"]
+script = ExtResource("1_htqt8")
+
+[node name="Planet1" type="Panel" parent="."]
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="SprInvSlot" type="Sprite2D" parent="Planet1"]
+position = Vector2(8, 8)
+texture = ExtResource("1_gsy6q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Planet1"]
+position = Vector2(8, 8)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_1pegw")
+
+[node name="SprLabel" type="Sprite2D" parent="Planet1"]
+position = Vector2(13, 12)
+texture = ExtResource("2_tiu1t")
+
+[node name="Label2" type="Label" parent="Planet1/SprLabel"]
+custom_minimum_size = Vector2(35, 24)
+offset_left = -5.0
+offset_top = -4.0
+offset_right = 30.0
+offset_bottom = 20.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "10
+
+"
+horizontal_alignment = 1
+
+[node name="Planet2" type="Panel" parent="."]
+visible = false
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="SprInvSlot" type="Sprite2D" parent="Planet2"]
+position = Vector2(8, 8)
+texture = ExtResource("1_gsy6q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Planet2"]
+position = Vector2(8, 8)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_23bf6")
+
+[node name="SprLabel" type="Sprite2D" parent="Planet2"]
+position = Vector2(13, 12)
+texture = ExtResource("2_tiu1t")
+
+[node name="Label2" type="Label" parent="Planet2/SprLabel"]
+custom_minimum_size = Vector2(35, 24)
+offset_left = -5.0
+offset_top = -4.0
+offset_right = 30.0
+offset_bottom = 20.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "50
+"
+horizontal_alignment = 1
+
+[node name="Planet3" type="Panel" parent="."]
+visible = false
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="SprInvSlot" type="Sprite2D" parent="Planet3"]
+position = Vector2(8, 8)
+texture = ExtResource("1_gsy6q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Planet3"]
+position = Vector2(8, 8)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_23bf6")
+
+[node name="SprLabel" type="Sprite2D" parent="Planet3"]
+position = Vector2(13, 12)
+texture = ExtResource("2_tiu1t")
+
+[node name="Label2" type="Label" parent="Planet3/SprLabel"]
+custom_minimum_size = Vector2(35, 24)
+offset_left = -5.0
+offset_top = -4.0
+offset_right = 30.0
+offset_bottom = 20.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "50
+"
+horizontal_alignment = 1
+
+[node name="Planet4" type="Panel" parent="."]
+visible = false
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="SprInvSlot" type="Sprite2D" parent="Planet4"]
+position = Vector2(8, 8)
+texture = ExtResource("1_gsy6q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Planet4"]
+position = Vector2(8, 8)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_23bf6")
+
+[node name="SprLabel" type="Sprite2D" parent="Planet4"]
+position = Vector2(13, 12)
+texture = ExtResource("2_tiu1t")
+
+[node name="Label2" type="Label" parent="Planet4/SprLabel"]
+custom_minimum_size = Vector2(35, 24)
+offset_left = -5.0
+offset_top = -4.0
+offset_right = 30.0
+offset_bottom = 20.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "50
+"
+horizontal_alignment = 1
+
+[node name="Planet5" type="Panel" parent="."]
+visible = false
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="SprInvSlot" type="Sprite2D" parent="Planet5"]
+position = Vector2(8, 8)
+texture = ExtResource("1_gsy6q")
+
+[node name="Sprite2D" type="Sprite2D" parent="Planet5"]
+position = Vector2(8, 8)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_23bf6")
+
+[node name="SprLabel" type="Sprite2D" parent="Planet5"]
+position = Vector2(13, 12)
+texture = ExtResource("2_tiu1t")
+
+[node name="Label2" type="Label" parent="Planet5/SprLabel"]
+custom_minimum_size = Vector2(35, 24)
+offset_left = -5.0
+offset_top = -4.0
+offset_right = 30.0
+offset_bottom = 20.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "50
+"
+horizontal_alignment = 1
+
+[node name="TextureButton" type="TextureRect" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -2.0
+offset_top = -17.0
+offset_right = 8.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("2_tiu1t")
+
+[node name="Button" type="Button" parent="TextureButton"]
+layout_mode = 0
+offset_right = 91.0
+offset_bottom = 73.0
+scale = Vector2(0.11, 0.11)
+theme_override_colors/icon_disabled_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_hover_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_pressed_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_focus_color = Color(0, 0, 0, 0)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0)
+theme_override_font_sizes/font_size = 16
+text = "MAP"
+
+[connection signal="pressed" from="TextureButton/Button" to="." method="_on_button_pressed"]
